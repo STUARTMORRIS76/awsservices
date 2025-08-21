@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Menu Wizard</title>
+  <style>
+  
+  
+ body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f3f4f6;
+  color: #232F3E;
+  margin: 40px;
+}
+
+h2 {
+  color: #232F3E;
+}
+
+#intro {
+  text-align: center;
+  color: #232F3E;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+#menu {
+  border: 2px solid #FF9900;
+  padding: 20px;
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Category links styled like AWS buttons */
+table.category-table td a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+}
+
+
+
+table.category-table td:hover {
+  background-color: #1a2530;
+}
+
+
+table.category-table {
+  border-collapse: separate;
+  border-spacing: 0 3px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  table-layout: fixed; /* 👈 Ensures equal column widths */
+}
+
+
+table.category-table td {
+  background-color: #232F3E;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid #FF9900;
+  transition: background-color 0.3s;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+
+
+
+/* Product table */
+table.product-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+table.product-table th {
+  background-color: #232F3E;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+table.product-table td {
+  background-color: #ffffff;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+#homeBtn {
+  display: none;
+  margin-top: 20px;
+  padding: 14px 20px;
+  background-color: #232F3E;
+  color: white;
+  border: 2px solid #FF9900;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+#homeBtn:hover {
+  background-color: #1a2530;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+
+h2 {
+  text-align: center;
+  color: #232F3E;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+  </style>
+</head>
+<body>
+
+<!-- Add this in your <head> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+<!-- Replace heading -->
+<h2><i class="fas fa-cloud"></i> Welcome to the AWS Services Overview</h2>
+
+  <p id="intro">Select a category below:</p>
+
+  <div id="menu">
+    <table class="category-table">
+<tr>
+  <td><a href="#" onclick="loadCategory('electronics')"><i class="fas fa-microchip"></i> AWS Compute</a></td>
+  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-network-wired"></i> AWS Networking</a></td>
+</tr>
+<tr>
+  <td><a href="#" onclick="loadCategory('clothing')"><i class="fas fa-database"></i> AWS Storage</a></td>
+  <td><a href="#" onclick="loadCategory('electronics')"><i class="fas fa-server"></i> AWS Database</a></td>
+</tr>
+<tr>
+  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-network-wired"></i> AWS Networking</a></td>
+  <td><a href="#" onclick="loadCategory('clothing')"><i class="fas fa-cloud-upload-alt"></i> AWS Content Delivery</a></td>
+</tr>
+<tr>
+  <td><a href="#" onclick="loadCategory('electronics')"><i class="fas fa-shield-alt"></i> AWS Resilient Architecture</a></td>
+  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-rocket"></i> AWS Deployment</a></td>
+</tr>
+<tr>
+  <td><a href="#" onclick="loadCategory('clothing')"><i class="fas fa-chart-line"></i> AWS Monitoring</a></td>
+  <td><a href="#" onclick="loadCategory('electronics')"><i class="fas fa-lock"></i> AWS Security</a></td>
+</tr>
+<tr>
+  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-project-diagram"></i> AWS Hybrid</a></td>
+  <td><a href="#" onclick="loadCategory('clothing')"><i class="fas fa-chart-pie"></i> AWS Analytics</a></td>
+</tr>
+<tr>
+  <td><a href="#" onclick="loadCategory('electronics')"><i class="fas fa-sliders-h"></i> AWS Configuration Management</a></td>
+  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-shipping-fast"></i> AWS Datashipping</a></td>
+</tr>
+<tr>
+  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-stream"></i> AWS DataStreams</a></td>
+  <td><a href="#" onclick="loadCategory('clothing')"><i class="fas fa-user-cog"></i> AWS Account Management/Billing</a></td>
+</tr>
+<tr>
+  <td><a href="#" onclick="loadCategory('electronics')"><i class="fas fa-code"></i> AWS Serverless</a></td>
+  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-boxes"></i> AWS Containers</a></td>
+</tr>
+<tr>
+  <td><a href="#" onclick="loadCategory('electronics')"><i class="fas fa-robot"></i> AWS Machine Learning/AI</a></td>
+  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-lightbulb"></i> AWS Methodologies</a></td>
+</tr>
+	  
+    </table>
+ </div>
+
+  <div style="text-align: center;">
+  <button id="homeBtn" onclick="goHome()">🏠 Home</button>
+</div>
+  <div id="tableContainer"></div>
+
+
+  <!-- Include your data file -->
+  <script src="products.js"></script>
+  <script>
+    function loadCategory(category) {
+      document.getElementById("menu").style.display = "none";
+      document.getElementById("intro").style.display = "none";
+      document.getElementById("homeBtn").style.display = "inline-block";
+
+      const container = document.getElementById("tableContainer");
+      container.style.display = "block";
+      container.innerHTML = "";
+
+      const items = productData[category];
+      if (!items) return;
+
+      let table = `<table class="product-table">
+        <tr><th>Product</th><th>Description</th></tr>`;
+      items.forEach(item => {
+        table += `<tr><td>${item.name}</td><td>${item.description}</td></tr>`;
+      });
+      table += "</table>";
+
+      container.innerHTML = table;
+    }
+
+    function goHome() {
+      document.getElementById("menu").style.display = "block";
+      document.getElementById("intro").style.display = "block";
+      document.getElementById("tableContainer").style.display = "none";
+      document.getElementById("homeBtn").style.display = "none";
+      document.getElementById("tableContainer").innerHTML = "";
+    }
+  </script>
+
+</body>
+</html>
