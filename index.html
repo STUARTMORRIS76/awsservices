@@ -118,6 +118,9 @@ table.product-table td {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
+body {
+  font-size: 18px; /* Default size */
+}
 
 h2 {
   text-align: center;
@@ -126,6 +129,23 @@ h2 {
   font-weight: 600;
 }
 
+.font-btn {
+  background-color: #232F3E;
+  color: white;
+  border: 2px solid #FF9900;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 12px 20px;
+  margin: 0 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.font-btn:hover {
+  background-color: #1a2530;
+  transform: scale(1.05);
+}
   </style>
 </head>
 <body>
@@ -133,6 +153,11 @@ h2 {
 <!-- Add this in your <head> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<div id="fontControls" style="text-align: center; margin-bottom: 20px;">
+  <button class="font-btn" onclick="setFontSize('16px')">Aa−</button>
+  <button class="font-btn" onclick="setFontSize('18px')">Aa</button>
+  <button class="font-btn" onclick="setFontSize('22px')">Aa+</button>
+</div>
 
 <!-- Replace heading -->
 <h2><i class="fas fa-cloud"></i> Welcome to the AWS Services Overview</h2>
@@ -211,6 +236,10 @@ const categoryTitles = {
   serverless: "AWS Serverless",
   container: "AWS Containers"
 };
+
+function setFontSize(size) {
+  document.body.style.fontSize = size;
+}
 
 function loadCategory(category) {
   document.getElementById("menu").style.display = "none";
