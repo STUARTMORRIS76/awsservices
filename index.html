@@ -142,40 +142,40 @@ h2 {
   <div id="menu">
     <table class="category-table">
 <tr>
-  <td><a href="#" onclick="loadCategory('electronics')"><i class="fas fa-microchip"></i> AWS Compute</a></td>
-  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-network-wired"></i> AWS Networking</a></td>
+  <td><a href="#" onclick="loadCategory('compute')"><i class="fas fa-microchip"></i> AWS Compute</a></td>
+  <td><a href="#" onclick="loadCategory('networking')"><i class="fas fa-network-wired"></i> AWS Networking</a></td>
 </tr>
 <tr>
   <td><a href="#" onclick="loadCategory('storage')"><i class="fas fa-database"></i> AWS Storage</a></td>
   <td><a href="#" onclick="loadCategory('database')"><i class="fas fa-server"></i> AWS Database</a></td>
 </tr>
 <tr>
-  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-network-wired"></i> AWS Networking</a></td>
-  <td><a href="#" onclick="loadCategory('clothing')"><i class="fas fa-cloud-upload-alt"></i> AWS Content Delivery</a></td>
+  <td><a href="#" onclick="loadCategory('disaster')"><i class="fas fa-network-wired"></i> AWS Disaster Recovery</a></td>
+  <td><a href="#" onclick="loadCategory('contentdelivery')"><i class="fas fa-cloud-upload-alt"></i> AWS Content Delivery</a></td>
 </tr>
 <tr>
  <td><a href="#" onclick="loadCategory('hybrid')"><i class="fas fa-project-diagram"></i> AWS Hybrid</a></td>
-  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-rocket"></i> AWS Deployment</a></td>
+  <td><a href="#" onclick="loadCategory('deploy')"><i class="fas fa-rocket"></i> AWS Deployment</a></td>
 </tr>
 <tr>
-  <td><a href="#" onclick="loadCategory('clothing')"><i class="fas fa-chart-line"></i> AWS Monitoring</a></td>
+  <td><a href="#" onclick="loadCategory('monitoring')"><i class="fas fa-chart-line"></i> AWS Monitoring</a></td>
   <td><a href="#" onclick="loadCategory('security')"><i class="fas fa-lock"></i> AWS Security</a></td>
 </tr>
 <tr>
   <td><a href="#" onclick="loadCategory('analytics')"><i class="fas fa-chart-pie"></i> AWS Analytics</a></td>
-    <td><a href="#" onclick="loadCategory('electronics')"><i class="fas fa-robot"></i> AWS Machine Learning/AI</a></td>
+    <td><a href="#" onclick="loadCategory('ai')"><i class="fas fa-robot"></i> AWS Machine Learning/AI</a></td>
 </tr>
 <tr>
-  <td><a href="#" onclick="loadCategory('electronics')"><i class="fas fa-sliders-h"></i> AWS Configuration Management</a></td>
-  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-shipping-fast"></i> AWS Datashipping</a></td>
+  <td><a href="#" onclick="loadCategory('configuration')"><i class="fas fa-sliders-h"></i> AWS Configuration Management</a></td>
+  <td><a href="#" onclick="loadCategory('datashipping')"><i class="fas fa-shipping-fast"></i> AWS Datashipping</a></td>
 </tr>
 <tr>
-  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-stream"></i> AWS DataStreams</a></td>
-  <td><a href="#" onclick="loadCategory('clothing')"><i class="fas fa-user-cog"></i> AWS Account Management/Billing</a></td>
+  <td><a href="#" onclick="loadCategory('datastreams')"><i class="fas fa-stream"></i> AWS DataStreams</a></td>
+  <td><a href="#" onclick="loadCategory('management')"><i class="fas fa-user-cog"></i> AWS Account Management/Billing</a></td>
 </tr>
 <tr>
-  <td><a href="#" onclick="loadCategory('electronics')"><i class="fas fa-code"></i> AWS Serverless</a></td>
-  <td><a href="#" onclick="loadCategory('books')"><i class="fas fa-boxes"></i> AWS Containers</a></td>
+  <td><a href="#" onclick="loadCategory('serverless')"><i class="fas fa-code"></i> AWS Serverless</a></td>
+  <td><a href="#" onclick="loadCategory('container')"><i class="fas fa-boxes"></i> AWS Containers</a></td>
 </tr>
 
 	  
@@ -191,7 +191,54 @@ h2 {
   <!-- Include your data file -->
   <script src="products.js"></script>
   <script>
-    function loadCategory(category) {
+const categoryTitles = {
+  compute: "AWS Compute",
+  networking: "AWS Networking",
+  storage: "AWS Storage",
+  database: "AWS Database",
+  disaster: "AWS Disaster Recovery",
+  contentdelivery: "AWS Content Delivery",
+  hybrid: "AWS Hybrid",
+  deploy: "AWS Deployment",
+  monitoring: "AWS Monitoring",
+  security: "AWS Security",
+  analytics: "AWS Analytics",
+  ai: "AWS Machine Learning / AI",
+  configuration: "AWS Configuration Management",
+  datashipping: "AWS Data Shipping",
+  datastreams: "AWS Data Streams",
+  management: "AWS Account Management / Billing",
+  serverless: "AWS Serverless",
+  container: "AWS Containers"
+};
+
+function loadCategory(category) {
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("homeBtn").style.display = "inline-block";
+
+  const container = document.getElementById("tableContainer");
+  container.style.display = "block";
+  container.innerHTML = "";
+
+  const items = productData[category];
+  if (!items) return;
+
+  const title = categoryTitles[category] || "Selected Category";
+  const header = `<h2>${title}</h2>`;
+
+  let table = `<table class="product-table">
+    <tr><th>Product</th><th>Description</th></tr>`;
+  items.forEach(item => {
+    table += `<tr><td>${item.name}</td><td>${item.description}</td></tr>`;
+  });
+  table += "</table>";
+
+  container.innerHTML = header + table;
+}
+
+
+    function loadCategory2(category) {
       document.getElementById("menu").style.display = "none";
       document.getElementById("intro").style.display = "none";
       document.getElementById("homeBtn").style.display = "inline-block";

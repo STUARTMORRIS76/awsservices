@@ -1,4 +1,355 @@
 const productData = {
+ai: [
+  {
+    "name": "Amazon SageMaker",
+    "description": "Comprehensive platform to build, train, and deploy machine learning models at scale"
+  },
+  {
+    "name": "Amazon Bedrock",
+    "description": "Service to build and scale generative AI applications using foundation models from leading providers"
+  },
+  {
+    "name": "Amazon Comprehend",
+    "description": "Natural language processing service that extracts insights from text such as sentiment, entities, and key phrases"
+  },
+  {
+    "name": "Amazon Rekognition",
+    "description": "Image and video analysis service that detects objects, scenes, faces, and unsafe content"
+  },
+  {
+    "name": "Amazon Textract",
+    "description": "Automatically extracts text, handwriting, and data from scanned documents"
+  },
+  {
+    "name": "Amazon Transcribe",
+    "description": "Automatic speech recognition service that converts speech to text from audio and video files"
+  },
+  {
+    "name": "Amazon Polly",
+    "description": "Text-to-speech service that turns text into lifelike speech using deep learning"
+  },
+  {
+    "name": "Amazon Translate",
+    "description": "Neural machine translation service for fast and accurate language translation"
+  },
+  {
+    "name": "Amazon Forecast",
+    "description": "Time-series forecasting service using machine learning to predict future trends"
+  },
+  {
+    "name": "Amazon Personalize",
+    "description": "Real-time personalization and recommendation engine powered by machine learning"
+  },
+  {
+    "name": "Amazon Lookout for Metrics",
+    "description": "Detects anomalies in metrics and helps identify their root causes using ML"
+  },
+  {
+    "name": "Amazon Lookout for Vision",
+    "description": "Detects visual defects in industrial products using computer vision"
+  },
+  {
+    "name": "Amazon Lookout for Equipment",
+    "description": "Predicts equipment failures by analyzing sensor data with machine learning"
+  },
+  {
+    "name": "Amazon CodeWhisperer",
+    "description": "AI-powered coding companion that generates code suggestions based on natural language prompts"
+  },
+  {
+    "name": "Amazon Kendra",
+    "description": "Intelligent search service powered by machine learning for enterprise data"
+  },
+  {
+    "name": "Amazon Lex",
+    "description": "Builds conversational interfaces using voice and text powered by natural language understanding"
+  },
+  {
+    "name": "Amazon HealthLake",
+    "description": "Transforms health data into a structured format for advanced analytics and machine learning"
+  },
+  {
+    "name": "Amazon A2I (Augmented AI)",
+    "description": "Enables human review of machine learning predictions to improve model accuracy"
+  },
+  {
+    "name": "AWS Inferentia",
+    "description": "Custom-built ML inference chip designed to deliver high performance at low cost"
+  },
+  {
+    "name": "AWS Trainium",
+    "description": "High-performance ML training chip optimized for deep learning workloads"
+  }
+]
+
+,container: [
+  {
+    "name": "Amazon ECS",
+    "description": "Highly scalable container orchestration service for running Docker containers on AWS"
+  },
+  {
+    "name": "Amazon ECS Anywhere",
+    "description": "Extends Amazon ECS to run containers on customer-managed infrastructure outside AWS"
+  },
+  {
+    "name": "Amazon EKS",
+    "description": "Managed Kubernetes service for running containerized applications using Kubernetes"
+  },
+  {
+    "name": "Amazon EKS Anywhere",
+    "description": "Deploy and manage Kubernetes clusters on-premises using Amazon EKS tooling"
+  },
+  {
+    "name": "AWS Fargate",
+    "description": "Serverless compute engine for containers that eliminates the need to manage EC2 instances"
+  },
+  {
+    "name": "AWS App Runner",
+    "description": "Fully managed service to build, deploy, and run containerized web applications and APIs"
+  },
+  {
+    "name": "AWS Batch",
+    "description": "Efficient batch computing service for running containerized jobs at any scale"
+  },
+  {
+    "name": "Amazon Lightsail Containers",
+    "description": "Simplified container deployment and management for small-scale applications"
+  },
+  {
+    "name": "Amazon EC2",
+    "description": "Provides the underlying compute capacity for self-managed container orchestration platforms"
+  },
+  {
+    "name": "Amazon ECR",
+    "description": "Fully managed container registry for storing, managing, and deploying Docker container images"
+  },
+  {
+    "name": "Red Hat OpenShift Service on AWS (ROSA)",
+    "description": "Managed OpenShift Kubernetes service jointly supported by AWS and Red Hat"
+  }
+],
+disaster: [
+  {
+    "name": "AWS Elastic Disaster Recovery (AWS DRS)",
+    "description": "Minimizes downtime and data loss with fast, reliable recovery of on-premises and cloud-based applications using continuous replication and point-in-time recovery"
+  },
+  {
+    "name": "AWS CloudEndure Disaster Recovery (Legacy)",
+    "description": "Previously used for disaster recovery; now replaced by AWS Elastic Disaster Recovery for enhanced performance and integration"
+  },
+ 
+  {
+    "name": "AWS Backup",
+    "description": "Centralized backup service that automates and manages backups across AWS services and hybrid workloads"
+  },
+  {
+    "name": "Amazon S3 Glacier",
+    "description": "Low-cost archival storage designed for long-term data retention and disaster recovery scenarios"
+  },
+ {
+    "name": "Amazon Route 53",
+    "description": "Highly available DNS service with failover routing policies to redirect traffic during outages"
+  },
+  {
+    "name": "AWS CloudFormation",
+    "description": "Infrastructure as code service that enables rapid redeployment of resources in recovery regions"
+  },
+  {
+    "name": "AWS Resilience Hub",
+    "description": "Central service to assess and improve application resilience using AWS best practices and automated recovery recommendations"
+  },
+  {
+    "name": "AWS Storage Gateway",
+    "description": "Hybrid cloud storage service that enables backup and disaster recovery from on-premises environments to AWS"
+  },
+  {
+    "name": "AWS Direct Connect",
+    "description": "Dedicated network connection that ensures secure and reliable data replication for disaster recovery"
+  },
+  {
+    "name": "AWS Systems Manager",
+    "description": "Provides operational insights and automation for recovery workflows and patching during disaster events"
+  },
+  {
+    "name": "AWS Control Tower",
+    "description": "Helps govern multi-account environments with guardrails and automated setup for resilient architectures"
+  }
+]
+
+,
+datashipping: [
+  {
+    "name": "AWS Snowcone",
+    "description": "Small, rugged edge device for offline data transfer and edge computing in constrained environments"
+  },
+  {
+    "name": "AWS Snowball Edge Storage Optimized",
+    "description": "80 TB device for large-scale data migration and edge storage, supporting block and object storage"
+  },
+  {
+    "name": "AWS Snowball Edge Compute Optimized",
+    "description": "Edge device with compute capabilities including optional GPU, ideal for processing data before transfer"
+  },
+  {
+    "name": "AWS Snowmobile",
+    "description": "Exabyte-scale data transfer service using a secure truck to move massive datasets to AWS"
+  },
+  {
+    "name": "AWS DataSync",
+    "description": "Online data transfer service for automating and accelerating movement between on-premises storage and AWS"
+  },
+  {
+    "name": "AWS Transfer Family",
+    "description": "Fully managed service for transferring files into and out of AWS using SFTP, FTPS, and FTP protocols"
+  },
+  {
+    "name": "Amazon Kinesis Data Firehose",
+    "description": "Real-time streaming service that delivers data to destinations like Amazon S3, Redshift, and OpenSearch"
+  },
+  {
+    "name": "AWS Migration Hub",
+    "description": "Centralized dashboard to track and manage data and application migrations across AWS services"
+  },
+  {
+    "name": "AWS Application Migration Service (MGN)",
+    "description": "Lift-and-shift migration service that replicates live server data to AWS for seamless cutover"
+  },
+  {
+    "name": "AWS Backup",
+    "description": "Fully managed service that centralizes and automates data protection across AWS services and hybrid workloads"
+  },
+  {
+    "name": "AWS Direct Connect",
+    "description": "Dedicated network connection from your premises to AWS, bypassing the public internet for secure, low-latency data transfer"
+  },
+  {
+    "name": "AWS Schema Conversion Tool",
+    "description": "Simplifies heterogeneous database migrations by converting source schemas and code to formats compatible with AWS targets"
+  },
+  {
+    "name": "AWS Glue",
+    "description": "Serverless data integration service for discovering, preparing, and transforming data from multiple sources into data lakes and analytics platforms"
+  }
+]
+
+,
+deploy: [
+  {
+    "name": "AWS CodeDeploy",
+    "description": "Automates code deployments to any instance, including EC2, Lambda, and on-premises servers"
+  },
+  {
+    "name": "AWS CodePipeline",
+    "description": "Orchestrates continuous integration and continuous delivery (CI/CD) workflows for fast and reliable application updates"
+  },
+  {
+    "name": "AWS CodeBuild",
+    "description": "Fully managed build service that compiles source code, runs tests, and produces software packages"
+  },
+  {
+    "name": "AWS CodeCommit",
+    "description": "Secure, scalable, and managed source control service that hosts private Git repositories"
+  },
+  {
+    "name": "AWS CloudFormation",
+    "description": "Infrastructure as code service that lets you model and provision AWS resources using templates"
+  },
+  {
+    "name": "AWS Elastic Beanstalk",
+    "description": "Platform-as-a-Service for deploying and scaling web applications automatically without managing infrastructure"
+  },
+  {
+    "name": "AWS AppConfig",
+    "description": "Feature of AWS Systems Manager that enables safe and rapid deployment of application configurations"
+  },
+  {
+    "name": "AWS OpsWorks",
+    "description": "Configuration management service that uses Chef and Puppet to automate server setup, deployment, and management"
+  },
+  {
+    "name": "AWS SAM (Serverless Application Model)",
+    "description": "Framework for building serverless applications using simplified syntax and deployment tooling"
+  },
+  {
+    "name": "AWS Cloud Development Kit (CDK)",
+    "description": "Open-source software development framework to define cloud infrastructure using familiar programming languages"
+  },
+  {
+    "name": "AWS Proton",
+    "description": "Fully managed deployment service for container and serverless applications, designed for platform teams"
+  },
+  {
+    "name": "AWS Launch Wizard",
+    "description": "Guided deployment tool for enterprise applications like SAP, SQL Server, and Active Directory"
+  },
+  {
+    "name": "AWS Service Catalog",
+    "description": "Allows organizations to create and manage approved catalogs of resources for self-service deployment"
+  }
+]
+
+
+,compute:[
+  { "name": "Amazon EC2", "description": "Scalable virtual servers in the cloud with a wide range of instance types for different workloads" },
+  { "name": "Amazon EC2 Auto Scaling", "description": "Automatically adjusts EC2 capacity to maintain performance and optimize costs" },
+  { "name": "Amazon EC2 Spot Instances", "description": "Cost-effective compute capacity for fault-tolerant workloads, available at up to 90% discount" },
+  { "name": "Amazon Lightsail", "description": "Simplified cloud platform for building applications and websites with preconfigured resources" },
+  { "name": "AWS Lambda", "description": "Serverless compute service that runs code in response to events without provisioning servers" },
+  { "name": "AWS Fargate", "description": "Serverless compute engine for containers, eliminating the need to manage EC2 instances" },
+  { "name": "Amazon ECS", "description": "Highly scalable container orchestration service for Docker containers" },
+  { "name": "Amazon EKS", "description": "Managed Kubernetes service for running containerized applications using Kubernetes" },
+  { "name": "AWS App Runner", "description": "Fully managed service to build and run containerized web applications and APIs" },
+  { "name": "AWS Batch", "description": "Efficient batch computing service for running large-scale parallel and high-performance jobs" },
+  { "name": "AWS Elastic Beanstalk", "description": "Platform-as-a-Service for deploying and scaling web applications automatically" },
+  { "name": "AWS Outposts", "description": "Run AWS infrastructure and services on-premises for a consistent hybrid experience" },
+  { "name": "AWS Wavelength", "description": "Delivers ultra-low latency applications for 5G devices by extending AWS infrastructure to telecom networks" },
+  { "name": "AWS Local Zones", "description": "Places compute, storage, and other services closer to end-users for low-latency applications" },
+  { "name": "VMware Cloud on AWS", "description": "Seamlessly extends and migrates VMware workloads to AWS infrastructure" },
+  { "name": "AWS Serverless Application Repository", "description": "Collection of serverless applications that can be deployed directly into your AWS environment" },
+  { "name": "Amazon EC2 Image Builder", "description": "Automates the creation, management, and deployment of secure EC2 images" }
+]
+,
+ contentdelivery: [
+  {
+    "name": "Amazon CloudFront",
+    "description": "Global content delivery network (CDN) that securely delivers data, videos, applications, and APIs with low latency and high transfer speeds"
+  },
+  {
+    "name": "AWS Global Accelerator",
+    "description": "Networking service that improves the availability and performance of your applications with static IP addresses and global routing"
+  },
+  {
+    "name": "Amazon Route 53",
+    "description": "Highly available and scalable DNS web service for domain registration, routing, and health checks"
+  },
+  {
+    "name": "AWS Elemental MediaConvert",
+    "description": "File-based video transcoding service for converting media into formats for broadcast and multiscreen delivery"
+  },
+  {
+    "name": "AWS Elemental MediaLive",
+    "description": "Live video processing service that encodes real-time video streams for broadcast and streaming platforms"
+  },
+  {
+    "name": "AWS Elemental MediaPackage",
+    "description": "Prepares and protects video content for delivery over the internet, supporting formats like HLS, DASH, and CMAF"
+  },
+  {
+    "name": "AWS Elemental MediaStore",
+    "description": "Storage service optimized for media workloads, offering low latency and high throughput for video origination"
+  },
+  {
+    "name": "AWS Elemental MediaConnect",
+    "description": "Reliable transport service for live video, enabling contribution and distribution of high-quality streams"
+  },
+  {
+    "name": "AWS Cloud Map",
+    "description": "Service discovery tool that maps application components to custom names, enabling dynamic routing and content delivery"
+  }
+]
+,
+
+
 	storage: [
   { "name": "Amazon S3", "description": "Scalable object storage for any type of data with high durability and availability" },
   { "name": "Amazon S3 Glacier", "description": "Low-cost archival storage designed for long-term data retention with retrieval options from milliseconds to hours" },
@@ -83,7 +434,423 @@ const productData = {
   { "name": "AWS Audit Manager", "description": "Continuously auditing AWS usage against prebuilt and custom frameworks" },
   { "name": "AWS Artifact", "description": "Your gateway to compliance reports from AWS and ISVs" },
   { "name": "AWS Control Tower", "description": "Account deployment and governance" }
+],
+monitoring :[
+  {
+    "name": "Amazon CloudWatch",
+    "description": "Central monitoring service for collecting metrics, logs, and events from AWS resources and applications"
+  },
+  {
+    "name": "AWS CloudTrail",
+    "description": "Records AWS API calls and user activity for auditing, security analysis, and operational troubleshooting"
+  },
+  {
+    "name": "AWS Config",
+    "description": "Tracks configuration changes and evaluates resource compliance against defined rules"
+  },
+  {
+    "name": "AWS X-Ray",
+    "description": "Distributed tracing service that helps analyze and debug applications, especially microservices"
+  },
+  {
+    "name": "Amazon Managed Grafana",
+    "description": "Fully managed Grafana service for visualizing metrics and logs from CloudWatch, Prometheus, and other sources"
+  },
+  {
+    "name": "Amazon Managed Service for Prometheus",
+    "description": "Scalable monitoring service for container workloads using Prometheus-compatible metrics"
+  },
+  {
+    "name": "AWS Distro for OpenTelemetry (ADOT)",
+    "description": "Open-source distribution for collecting telemetry data (metrics, logs, traces) from applications"
+  },
+  {
+    "name": "AWS Control Tower",
+    "description": "Provides governance and visibility across multi-account AWS environments with integrated monitoring"
+  },
+  {
+    "name": "AWS Health Dashboard",
+    "description": "Provides personalized alerts and notifications about AWS service events that may impact your resources"
+  },
+  {
+    "name": "AWS Personal Health Dashboard",
+    "description": "Delivers alerts and remediation guidance when AWS is experiencing events that affect your account"
+  },
+  {
+    "name": "AWS Trusted Advisor",
+    "description": "Provides real-time guidance to help provision resources following AWS best practices, including monitoring checks"
+  },
+  {
+    "name": "AWS Application Signals",
+    "description": "Automatically collects and visualizes application performance metrics for faster troubleshooting"
+  },
+  {
+    "name": "Amazon OpenSearch Service",
+    "description": "Search and analytics engine for log data, enabling real-time monitoring and observability"
+  }
 ]
+,
+serverless : [
+  {
+    "name": "AWS Lambda",
+    "description": "Run code in response to events without provisioning or managing servers"
+  },
+  {
+    "name": "Amazon S3",
+    "description": "Object storage service that scales automatically and supports serverless architectures"
+  },
+  {
+    "name": "Amazon DynamoDB",
+    "description": "Serverless NoSQL database with single-digit millisecond latency and automatic scaling"
+  },
+  {
+    "name": "Amazon API Gateway",
+    "description": "Create, publish, and manage REST and WebSocket APIs for serverless applications"
+  },
+  {
+    "name": "AWS Step Functions",
+    "description": "Serverless workflow service for coordinating distributed applications using visual workflows"
+  },
+  {
+    "name": "Amazon EventBridge",
+    "description": "Event bus for building event-driven applications that integrate AWS services and SaaS apps"
+  },
+  {
+    "name": "Amazon SNS",
+    "description": "Pub/Sub messaging service for decoupling microservices and sending notifications"
+  },
+  {
+    "name": "Amazon SQS",
+    "description": "Message queuing service for decoupling and scaling microservices, distributed systems, and serverless apps"
+  },
+  {
+    "name": "AWS Fargate",
+    "description": "Serverless compute engine for containers that eliminates the need to manage EC2 instances"
+  },
+  {
+    "name": "AWS AppSync",
+    "description": "Managed GraphQL service for building scalable serverless APIs with real-time data sync"
+  },
+  {
+    "name": "AWS Amplify",
+    "description": "Set of tools and services for building full-stack serverless web and mobile applications"
+  },
+  {
+    "name": "Amazon Kinesis Data Firehose",
+    "description": "Serverless service for delivering real-time streaming data to destinations like S3 and Redshift"
+  },
+  {
+    "name": "Amazon Timestream",
+    "description": "Serverless time series database for IoT and operational applications"
+  },
+  {
+    "name": "Amazon Aurora Serverless",
+    "description": "On-demand, auto-scaling version of Amazon Aurora for infrequent or variable workloads"
+  },
+  {
+    "name": "AWS Glue",
+    "description": "Serverless data integration service for discovering, preparing, and transforming data"
+  },
+  {
+    "name": "AWS SAM (Serverless Application Model)",
+    "description": "Framework for building serverless applications using simplified syntax and deployment tooling"
+  },
+  {
+    "name": "AWS CloudFormation",
+    "description": "Infrastructure as code service that supports serverless resource provisioning via templates"
+  },
+  {
+    "name": "AWS App Runner",
+    "description": "Fully managed service to deploy and run containerized web applications and APIs without managing infrastructure"
+  },
+  {
+    "name": "AWS CodeBuild",
+    "description": "Serverless build service that compiles source code, runs tests, and produces software packages"
+  },
+  {
+    "name": "AWS CodePipeline",
+    "description": "Serverless CI/CD service for automating build, test, and deployment workflows"
+  }
+],
+management:[
+  {
+    "name": "AWS Organizations",
+    "description": "Manage and govern multiple AWS accounts centrally with consolidated billing and policy controls"
+  },
+  {
+    "name": "AWS Billing and Cost Management",
+    "description": "Suite of tools to manage billing, payments, invoices, and optimize cloud spending"
+  },
+  {
+    "name": "AWS Cost Explorer",
+    "description": "Visualize and analyze your AWS usage and spending patterns over time"
+  },
+  {
+    "name": "AWS Budgets",
+    "description": "Set custom cost and usage budgets and receive alerts when thresholds are exceeded"
+  },
+  {
+    "name": "AWS Cost Anomaly Detection",
+    "description": "Uses machine learning to detect unusual spending patterns and alert you to anomalies"
+  },
+  {
+    "name": "AWS Cost and Usage Report (CUR)",
+    "description": "Detailed dataset of AWS usage and costs, exportable to Amazon S3 for analysis"
+  },
+  {
+    "name": "AWS Billing Conductor",
+    "description": "Customize billing and cost allocation across accounts with billing groups and pricing models"
+  },
+  {
+    "name": "AWS Purchase Orders",
+    "description": "Track and manage purchase orders associated with your AWS billing account"
+  },
+  {
+    "name": "AWS Tax Settings",
+    "description": "Configure tax registration and exemption settings for your AWS account"
+  },
+  {
+    "name": "AWS Free Tier Dashboard",
+    "description": "Monitor your usage of AWS Free Tier services and avoid unexpected charges"
+  },
+  {
+    "name": "AWS Payment History",
+    "description": "View and download records of past payments and invoices"
+  },
+  {
+    "name": "AWS Price List API",
+    "description": "Programmatically access AWS service pricing information for cost modeling"
+  },
+  {
+    "name": "AWS Cost Categories",
+    "description": "Organize and group AWS costs using custom categories for better financial reporting"
+  },
+  {
+    "name": "AWS Cost Allocation Tags",
+    "description": "Assign tags to resources to track and allocate costs across projects or departments"
+  },
+  {
+    "name": "AWS Account Management Console",
+    "description": "Manage account settings, security credentials, and contact information"
+  },
+  {
+    "name": "AWS Identity and Access Management (IAM)",
+    "description": "Your cornerstone for securely managing access to AWS services and resources"
+  }
+],
+networking: [
+  {
+    "name": "Amazon VPC",
+    "description": "Create isolated virtual networks in the AWS cloud with full control over IP addressing, subnets, routing, and security"
+  },
+  {
+    "name": "AWS Transit Gateway",
+    "description": "Connects multiple VPCs and on-premises networks through a central hub for simplified routing and scalability"
+  },
+  {
+    "name": "AWS Direct Connect",
+    "description": "Establishes dedicated network connections between your data center and AWS for consistent, low-latency performance"
+  },
+  {
+    "name": "AWS Site-to-Site VPN",
+    "description": "Securely connects your on-premises network to AWS using encrypted IPsec tunnels"
+  },
+  {
+    "name": "AWS Client VPN",
+    "description": "Enables secure remote access to AWS and on-premises resources for users via OpenVPN-based connections"
+  },
+  {
+    "name": "Amazon Route 53",
+    "description": "Highly available and scalable DNS service with domain registration, routing policies, and health checks"
+  },
+  {
+    "name": "AWS Global Accelerator",
+    "description": "Improves application availability and performance using static IPs and global routing over the AWS network"
+  },
+  {
+    "name": "AWS PrivateLink",
+    "description": "Provides private connectivity between VPCs and AWS services without exposing traffic to the public internet"
+  },
+  {
+    "name": "AWS Cloud WAN",
+    "description": "Builds and manages global wide-area networks across AWS Regions and on-premises locations using a unified policy framework"
+  },
+  {
+    "name": "AWS Network Firewall",
+    "description": "Managed network firewall service for inspecting and filtering traffic at the VPC level"
+  },
+  {
+    "name": "AWS Firewall Manager",
+    "description": "Centralized management of firewall rules, security groups, and network protections across accounts"
+  },
+  {
+    "name": "Elastic Load Balancing (ELB)",
+    "description": "Distributes incoming traffic across multiple targets to ensure fault tolerance and scalability"
+  },
+  {
+    "name": "Application Load Balancer (ALB)",
+    "description": "Layer 7 load balancer that routes HTTP/HTTPS traffic based on content and supports advanced routing features"
+  },
+  {
+    "name": "Network Load Balancer (NLB)",
+    "description": "Layer 4 load balancer optimized for high-performance TCP traffic and static IP support"
+  },
+  {
+    "name": "Gateway Load Balancer (GLB)",
+    "description": "Distributes traffic to third-party virtual appliances for deep packet inspection and security services"
+  },
+  {
+    "name": "Auto Scaling Groups (ASG)",
+    "description": "Automatically adjusts EC2 instance capacity to maintain performance and availability across your application"
+  },
+  {
+    "name": "VPC Endpoint - Interface",
+    "description": "Creates a private connection to AWS services using elastic network interfaces within your VPC"
+  },
+  {
+    "name": "VPC Endpoint - Gateway",
+    "description": "Provides private access to AWS services like S3 and DynamoDB using route tables within your VPC"
+  },
+  {
+    "name": "NAT Gateway",
+    "description": "Enables instances in a private subnet to connect to the internet or other AWS services without exposing them"
+  },
+  {
+    "name": "Internet Gateway",
+    "description": "Allows communication between instances in your VPC and the internet"
+  },
+  {
+    "name": "NAT Instance",
+    "description": "EC2-based alternative to NAT Gateway for outbound internet access from private subnets"
+  },
+  {
+    "name": "Security Groups",
+    "description": "Virtual firewalls that control inbound and outbound traffic to AWS resources at the instance level"
+  },
+  {
+    "name": "Network Access Control Lists (NACLs)",
+    "description": "Stateless firewalls that control traffic at the subnet level with customizable rules"
+  },
+  {
+    "name": "AWS App Mesh",
+    "description": "Service mesh that enables application-level networking for microservices with traffic routing and observability"
+  },
+  {
+    "name": "AWS Cloud Map",
+    "description": "Service discovery tool that maps application components to custom names for dynamic routing"
+  },
+  {
+    "name": "Amazon VPC Lattice",
+    "description": "Application-layer networking service for secure communication between services across VPCs"
+  },
+  {
+    "name": "AWS Verified Access",
+    "description": "Zero-trust access service that enables secure connectivity to applications without a VPN"
+  },
+  {
+    "name": "AWS Private 5G",
+    "description": "Deploys and manages private cellular networks for secure, high-bandwidth connectivity in enterprise environments"
+  }
+],
+configuration: [
+  {
+    "name": "AWS Config",
+    "description": "Tracks configuration changes, maintains resource inventory, and evaluates compliance against custom rules"
+  },
+  {
+    "name": "AWS Systems Manager",
+    "description": "Unified interface for managing infrastructure and software configurations across AWS and on-premises environments"
+  },
+  {
+    "name": "AWS CloudFormation",
+    "description": "Infrastructure as code service that provisions and manages AWS resources using declarative templates"
+  },
+  {
+    "name": "AWS OpsWorks",
+    "description": "Configuration management service that uses Chef and Puppet to automate server setup and deployment"
+  },
+  {
+    "name": "AWS Service Catalog",
+    "description": "Enables organizations to create and manage approved catalogs of resources for consistent configuration and deployment"
+  },
+  {
+    "name": "AWS Elastic Beanstalk",
+    "description": "Platform-as-a-Service that automatically handles environment provisioning, configuration, and scaling for applications"
+  },
+  {
+    "name": "AWS Launch Wizard",
+    "description": "Guided deployment tool that configures and provisions enterprise applications like SAP and SQL Server"
+  },
+  {
+    "name": "AWS Cloud Development Kit (CDK)",
+    "description": "Framework for defining cloud infrastructure using familiar programming languages with reusable configuration constructs"
+  },
+  {
+    "name": "AWS SAM (Serverless Application Model)",
+    "description": "Framework for building and deploying serverless applications using simplified configuration syntax"
+  },
+  {
+    "name": "AWS AppConfig",
+    "description": "Feature of Systems Manager that enables safe and rapid deployment of application configurations"
+  },
+  {
+    "name": "AWS CodeDeploy",
+    "description": "Automates application deployments and configuration updates across EC2, Lambda, and on-premises servers"
+  },
+  {
+    "name": "AWS CodePipeline",
+    "description": "Orchestrates CI/CD workflows including configuration changes across environments"
+  },
+  {
+    "name": "AWS CodeBuild",
+    "description": "Builds and tests code with configuration scripts and environment variables for deployment pipelines"
+  }
+],
+datastreams : [
+  {
+    "name": "Amazon Kinesis Data Streams",
+    "description": "Real-time data streaming service for ingesting high-throughput data such as logs, events, and telemetry"
+  },
+  {
+    "name": "Amazon Kinesis Data Firehose",
+    "description": "Fully managed service for delivering streaming data to destinations like Amazon S3, Redshift, and OpenSearch"
+  },
+  {
+    "name": "Amazon Kinesis Data Analytics",
+    "description": "Real-time analytics service that processes streaming data using SQL or Apache Flink"
+  },
+  {
+    "name": "Amazon MSK (Managed Streaming for Apache Kafka)",
+    "description": "Fully managed service for building and running applications using Apache Kafka for real-time data streaming"
+  },
+  {
+    "name": "Amazon MSK Serverless",
+    "description": "Serverless option for Amazon MSK that automatically provisions and scales resources for Kafka workloads"
+  },
+  {
+    "name": "AWS Glue Streaming ETL",
+    "description": "Processes streaming data in real time using serverless extract, transform, and load (ETL) jobs"
+  },
+  {
+    "name": "AWS DMS (Database Migration Service) with CDC",
+    "description": "Supports change data capture (CDC) to stream database changes in near real-time during migrations"
+  },
+  {
+    "name": "Amazon EventBridge",
+    "description": "Event bus service for building event-driven architectures that stream events between AWS services and SaaS apps"
+  },
+  {
+    "name": "Amazon SQS",
+    "description": "Message queuing service that supports decoupled, scalable data streaming between distributed systems"
+  },
+  {
+    "name": "Amazon SNS",
+    "description": "Pub/Sub messaging service for broadcasting streaming data to multiple subscribers in real time"
+  }
+]
+
+
+
 
 };
 
