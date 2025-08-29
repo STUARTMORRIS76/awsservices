@@ -39,7 +39,7 @@ h2 {
 table.category-table td a {
   color: white;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
   display: block;
 }
@@ -72,7 +72,9 @@ table.category-table td {
   box-sizing: border-box;
 }
 
-
+table.category-table td a {
+  font-size: var(--base-font-size);
+}
 
 
 /* Product table */
@@ -119,7 +121,7 @@ table.product-table td {
 }
 
 body {
-  font-size: 18px; /* Default size */
+  font-size: 22px; /* Default size */
 }
 
 h2 {
@@ -147,6 +149,18 @@ h2 {
   transform: scale(1.05);
 }
 
+:root {
+  --base-font-size: 22px;
+}
+
+body {
+  font-size: var(--base-font-size);
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f3f4f6;
+  color: #232F3E;
+  margin: 40px;
+}
+
   </style>
 </head>
 <body>
@@ -156,7 +170,7 @@ h2 {
 
 <div id="fontControls" style="text-align: center; margin-bottom: 20px;">
   <button class="font-btn" onclick="adjustFontSize(-2)">A−</button>
-  <span id="fontSizeDisplay" style="font-weight: bold; margin: 0 12px;">18px</span>
+  <span id="fontSizeDisplay" style="font-weight: bold; margin: 0 12px;">22px</span>
   <button class="font-btn" onclick="adjustFontSize(2)">A+</button>
 </div>
 
@@ -242,14 +256,14 @@ function setFontSize(size) {
   document.body.style.fontSize = size;
 }
 
-let currentFontSize = 18;
+let currentFontSize = 22;
 
 function adjustFontSize(change) {
   currentFontSize += change;
   if (currentFontSize < 18) currentFontSize = 18;
-  if (currentFontSize > 30) currentFontSize = 30;
+  if (currentFontSize > 36) currentFontSize = 36;
 
-  document.body.style.fontSize = currentFontSize + "px";
+  document.documentElement.style.setProperty('--base-font-size', currentFontSize + 'px');
   document.getElementById("fontSizeDisplay").textContent = currentFontSize + "px";
 }
 
