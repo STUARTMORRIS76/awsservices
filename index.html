@@ -263,6 +263,7 @@ function adjustFontSize(change) {
   if (currentFontSize < 18) currentFontSize = 18;
   if (currentFontSize > 36) currentFontSize = 36;
 
+ document.body.style.fontSize = currentFontSize + "px";
   document.documentElement.style.setProperty('--base-font-size', currentFontSize + 'px');
   document.getElementById("fontSizeDisplay").textContent = currentFontSize + "px";
 }
