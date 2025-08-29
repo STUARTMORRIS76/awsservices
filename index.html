@@ -299,7 +299,7 @@ function setFontSize(size) {
   document.body.style.fontSize = size;
 }
 
-let currentFontSize = window.innerWidth <= 1080 ? 36 : 22;
+let currentFontSize = window.innerWidth <= 1080 ? 18 : 22;
 
 document.documentElement.style.setProperty('--base-font-size', currentFontSize + 'px');
 document.getElementById("fontSizeDisplay").textContent = currentFontSize + "px";
