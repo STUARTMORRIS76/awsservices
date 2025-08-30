@@ -2,7 +2,8 @@ const productData = {
 ai: [
   {
     "name": "Amazon SageMaker",
-    "description": "Comprehensive platform to build, train, and deploy machine learning models at scale"
+    "description": "Comprehensive platform to build, train, and deploy machine learning models at scale",
+    "technotes": "Supports dual SIM and eSIM."
   },
   {
     "name": "Amazon Bedrock",
