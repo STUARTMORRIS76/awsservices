@@ -133,10 +133,7 @@ table.product-table td {
   border-bottom: 1px solid #ddd;
 }
 
-/* Make the first column (Product name) bold */
-table.product-table td:first-child {
-  font-weight: bold;
-}
+
 
 #homeBtn {
   display: none;
@@ -271,6 +268,24 @@ input:checked + .slider:before {
   }
 }
 
+.technotes-cell {
+  background-color: #f9f9f9;
+  font-style: normal;
+  font-weight: normal !important; /* 👈 Force override */
+  color: #333;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.technotes-label {
+  font-weight: normal;
+  font-style: italic;
+  color: #555;
+  margin-right: 6px;
+}
+
+
   </style>
 </head>
 <body>
@@ -356,7 +371,7 @@ input:checked + .slider:before {
   <script src="products.js"></script>
   <script>
 
-
+let currentCategory = null;
 
 const categoryTitles = {
   compute: "AWS Compute",
@@ -402,10 +417,45 @@ let showTechnotes = false;
 
 function toggleTechnotes() {
   showTechnotes = document.getElementById("toggleTechnotes").checked;
+  if (currentCategory) {
+    loadCategory(currentCategory);
+  }
+}
+
+function loadCategory(category) {
+  currentCategory = category;
+
+  document.getElementById("menu").style.display = "none";
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("homeBtn").style.display = "inline-block";
+
+  const container = document.getElementById("tableContainer");
+  container.style.display = "block";
+  container.innerHTML = "";
+
+  const items = productData[category];
+  if (!items) return;
+
+  const title = categoryTitles[category] || "Selected Category";
+  const header = `<h2>${title}</h2>`;
+
+  let table = `<table class="product-table">
+    <tr><th>Product</th><th>Description</th></tr>`;
+
+
+items.forEach(item => {
+  table += `<tr><td><strong>${item.name}</strong></td><td>${item.description}</td></tr>`;
+  if (showTechnotes && item.technotes) {
+    table += `<tr><td colspan="2" class="technotes-cell">🛠 <span class="technotes-label">Tech Notes:</span> <i>${item.technotes}</i></td></tr>`;
+  }
+});
+
+  table += "</table>";
+  container.innerHTML = header + table;
 }
 
 
-function loadCategory(category) {
+function loadCategory4(category) {
   document.getElementById("menu").style.display = "none";
   document.getElementById("intro").style.display = "none";
   document.getElementById("homeBtn").style.display = "inline-block";
