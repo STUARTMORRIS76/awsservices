@@ -94,7 +94,8 @@ ai: [
   },
   {
     "name": "Amazon EKS",
-    "description": "Managed Kubernetes service for running containerized applications using Kubernetes"
+    "description": "Managed Kubernetes service for running containerized applications using Kubernetes",
+    "technotes":"lets you run Kubernetes clusters on your own infrastructure using the same tools as AWS EKS, without needing a cloud connection. It's ideal for hybrid or on-prem environments."
   },
   {
     "name": "Amazon EKS Anywhere",
@@ -291,7 +292,7 @@ deploy: [
 
 
 ,compute:[
-  { "name": "Amazon EC2", "description": "Scalable virtual servers in the cloud with a wide range of instance types for different workloads" },
+  { "name": "Amazon EC2", "description": "Scalable virtual servers in the cloud with a wide range of instance types for different workloads","technotes":"Put in a <u>cluster</u> if you are using in HPC (High Performance Computing)" },
   { "name": "Amazon EC2 Auto Scaling", "description": "Automatically adjusts EC2 capacity to maintain performance and optimize costs" },
   { "name": "Amazon EC2 Spot Instances", "description": "Cost-effective compute capacity for fault-tolerant workloads, available at up to 90% discount" },
   { "name": "Amazon Lightsail", "description": "Simplified cloud platform for building applications and websites with preconfigured resources" },
@@ -352,7 +353,7 @@ deploy: [
 
 
 	storage: [
-  { "name": "Amazon S3", "description": "Scalable object storage for any type of data with high durability and availability" },
+  { "name": "Amazon S3", "description": "Scalable object storage for any type of data with high durability and availability","technotes":"S3 can be put on CloudFront, <BR>when uploading over 100mb use multipart uploading" },
   { "name": "Amazon S3TA", "description": "Amazon S3 Transfer Acceleration can speed up content transfers to and from Amazon S3 for long-distance transfer of larger objects.","technotes":"S3TA improves transfer performance by routing traffic through Amazon CloudFront’s globally distributed Edge Locations and over AWS backbone networks, and by using network protocol optimizations.","billingnotes":"With S3TA, you pay only for transfers that are accelerated." },
   { "name": "Amazon S3 Glacier", "description": "Low-cost archival storage designed for long-term data retention with retrieval options from milliseconds to hours" },
   { "name": "Amazon EBS", "description": "Block storage volumes for use with Amazon EC2, offering low-latency performance and high availability" },
@@ -403,9 +404,10 @@ deploy: [
    [
   { "name": "Amazon Aurora", "description": "High-performance managed relational database compatible with MySQL and PostgreSQL" },
   { "name": "Amazon RDS", "description": "Managed relational database service supporting multiple engines like MySQL, PostgreSQL, Oracle, and SQL Server" },
+  { "name": "Babelfish for PostgreSQL", "description": "lets you run SQL Server applications on PostgreSQL by adding T-SQL compatibility and support for SQL Server’s wire protocol."},
   { "name": "Amazon DynamoDB", "description": "Fully managed NoSQL database for key-value and document data with single-digit millisecond latency" },
   { "name": "Amazon DAX", "description": "Managed in-memory caching service for DynamoDB that delivers microsecond read performance by caching frequently accessed data" },
-  { "name": "Amazon ElastiCache", "description": "In-memory caching service supporting Redis and Memcached for ultra-fast performance" },
+  { "name": "Amazon ElastiCache", "description": "In-memory caching service supporting Redis and Memcached for ultra-fast performance","technotes":"Applications - Game Leaderboards" },
   { "name": "Amazon Redshift", "description": "Fully managed data warehouse for fast querying and analytics at scale" },
   { "name": "Amazon Neptune", "description": "Managed graph database service optimized for storing and querying highly connected data" },
   { "name": "Amazon DocumentDB", "description": "Managed document database service compatible with MongoDB workloads" },
@@ -507,7 +509,8 @@ serverless : [
   },
   {
     "name": "Amazon API Gateway",
-    "description": "Create, publish, and manage REST and WebSocket APIs for serverless applications"
+    "description": "Create, publish, and manage REST and WebSocket APIs for serverless applications",
+    "technotes":"supports <b>REST</b> (standard request-response over HTTP for CRUD operations), <b>HTTP</b> (lightweight APIs with flexible routing), and <b>WebSocket</b> (persistent, bidirectional connections for real-time apps like chat or gaming)"
   },
   {
     "name": "AWS Step Functions",
@@ -578,6 +581,22 @@ management:[
   {
     "name": "AWS Organizations",
     "description": "Manage and govern multiple AWS accounts centrally with consolidated billing and policy controls"
+  },
+{
+    "name": "AWS Managed Microsoft Active Directory",
+    "description": "A fully managed Microsoft Active Directory in the AWS Cloud for AD-aware workloads and seamless integration."
+  },
+  {
+    "name": "AWS Managed Microsoft AD Connector",
+    "description": "A proxy that connects AWS resources to your on-premises Microsoft AD without storing data in the cloud."
+  },
+  {
+    "name": "Simple AD",
+    "description": "A low-cost, standalone directory based on Samba, suitable for small AD-compatible workloads."
+  },
+  {
+    "name": "Amazon Cognito",
+    "description": "Provides user authentication, authorization, and user management for web and mobile apps."
   },
   {
     "name": "AWS Billing and Cost Management",
@@ -703,7 +722,8 @@ networking: [
   },
   {
     "name": "Auto Scaling Groups (ASG)",
-    "description": "Automatically adjusts EC2 instance capacity to maintain performance and availability across your application"
+    "description": "Automatically adjusts EC2 instance capacity to maintain performance and availability across your application",
+"technotes":"<u>Manual scaling</u> (user sets capacity manually—best for full control), <u>scheduled scaling</u> (based on time—ideal for predictable workloads), <u>dynamic scaling</u> (reacts to metrics—great for responsive scaling), <u>step scaling</u> (scales in steps—best for gradual, controlled changes), <u>target tracking</u> (maintains a metric target—perfect for consistent performance), and <u>predictive scaling</u> (forecasts demand—suited for seasonal or recurring traffic patterns)"
   },
   {
     "name": "VPC Endpoint - Interface",
@@ -815,7 +835,7 @@ datastreams : [
   },
   {
     "name": "Amazon Kinesis Data Firehose",
-    "description": "Fully managed service for delivering streaming data to destinations like Amazon S3, Redshift, and OpenSearch"
+    "description": "Fully managed service for delivering streaming data to destinations like Amazon S3, Redshift, and OpenSearch","technote":"Won't work with DynamoDB, but you can use S3"
   },
   {
     "name": "Amazon Kinesis Data Analytics",
