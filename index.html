@@ -285,6 +285,22 @@ input:checked + .slider:before {
   margin-right: 6px;
 }
 
+.billingnotes-cell {
+  background-color: #fefcf8;
+  font-style: normal;
+  font-weight: normal !important;
+  color: #444;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.billingnotes-label {
+  font-weight: normal;
+  font-style: italic;
+  color: #666;
+  margin-right: 6px;
+}
+
 
   </style>
 </head>
@@ -445,8 +461,14 @@ function loadCategory(category) {
 
 items.forEach(item => {
   table += `<tr><td><strong>${item.name}</strong></td><td>${item.description}</td></tr>`;
-  if (showTechnotes && item.technotes) {
-    table += `<tr><td colspan="2" class="technotes-cell">🛠 <span class="technotes-label">Tech Notes:</span> <i>${item.technotes}</i></td></tr>`;
+
+  if (showTechnotes) {
+    if (item.technotes) {
+      table += `<tr><td colspan="2" class="technotes-cell">🛠 <span class="technotes-label">Tech Notes:</span> ${item.technotes}</td></tr>`;
+    }
+    if (item.billingnotes) {
+      table += `<tr><td colspan="2" class="billingnotes-cell">💳 <span class="billingnotes-label">Billing Notes:</span> ${item.billingnotes}</td></tr>`;
+    }
   }
 });
 
