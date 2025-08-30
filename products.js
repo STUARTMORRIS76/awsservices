@@ -353,7 +353,7 @@ deploy: [
 
 	storage: [
   { "name": "Amazon S3", "description": "Scalable object storage for any type of data with high durability and availability" },
-	{ "name": "Amazon S3TA", "description": "Amazon S3 Transfer Acceleration can speed up content transfers to and from Amazon S3 for long-distance transfer of larger objects.","technotes":"S3TA improves transfer performance by routing traffic through Amazon CloudFront’s globally distributed Edge Locations and over AWS backbone networks, and by using network protocol optimizations.","billingnotes":"With S3TA, you pay only for transfers that are accelerated." },
+  { "name": "Amazon S3TA", "description": "Amazon S3 Transfer Acceleration can speed up content transfers to and from Amazon S3 for long-distance transfer of larger objects.","technotes":"S3TA improves transfer performance by routing traffic through Amazon CloudFront’s globally distributed Edge Locations and over AWS backbone networks, and by using network protocol optimizations.","billingnotes":"With S3TA, you pay only for transfers that are accelerated." },
   { "name": "Amazon S3 Glacier", "description": "Low-cost archival storage designed for long-term data retention with retrieval options from milliseconds to hours" },
   { "name": "Amazon EBS", "description": "Block storage volumes for use with Amazon EC2, offering low-latency performance and high availability" },
   { "name": "Amazon EFS", "description": "Fully managed elastic file system for Linux workloads, accessible across multiple EC2 instances" },
