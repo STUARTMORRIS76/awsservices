@@ -244,6 +244,32 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+#controlsRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* On smaller screens, stack controls vertically */
+@media (max-width: 1080px) {
+  #controlsRow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .control-group {
+    justify-content: center;
+  }
+}
 
   </style>
 </head>
@@ -252,16 +278,16 @@ input:checked + .slider:before {
 <!-- Add this in your <head> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<div id="controlsRow" style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 20px;">
+<div id="controlsRow">
   <!-- Font Size Controls -->
-  <div style="display: flex; align-items: center;">
+  <div class="control-group" id="fontControls">
     <button class="font-btn" onclick="adjustFontSize(-2)">A−</button>
     <span id="fontSizeDisplay" style="font-weight: bold; margin: 0 12px;">22px</span>
     <button class="font-btn" onclick="adjustFontSize(2)">A+</button>
   </div>
 
   <!-- Technotes Toggle -->
-  <div style="display: flex; align-items: center;">
+  <div class="control-group" id="toggleControl">
     <label class="switch">
       <input type="checkbox" id="toggleTechnotes" onchange="toggleTechnotes()">
       <span class="slider round"></span>
@@ -269,7 +295,6 @@ input:checked + .slider:before {
     <span style="font-weight: bold; margin-left: 10px;">Show Tech Notes</span>
   </div>
 </div>
-
 
 
 <!-- Replace heading -->
