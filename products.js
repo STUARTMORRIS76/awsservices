@@ -376,6 +376,8 @@ deploy: [
   { "name": "AWS Snowmobile", "description": "Exabyte-scale data transfer service using a secure shipping container transported by truck; ideal for migrating over 10 PB of data" }
 ],
   hybrid: [
+  { "name": "Route 53 Resolver endpoints", "description": "allow DNS queries to flow between your AWS VPC and external networks like on-premises systems.",
+     "technotes":"There are two types of Resolver endpoints: inbound and outbound. <B>Inbound endpoints</B> let DNS queries come into your AWS VPC from outside sources—like when your on-premises servers need to resolve AWS-hosted domain names. <B>Outbound endpoints</B> do the opposite: they send DNS queries out from your VPC to external DNS servers, which is useful when your AWS resources need to look up names hosted outside AWS. Together, they help connect your cloud and on-prem environments for smooth DNS resolution."},
   { "name": "AWS Direct Connect", "description": "Dedicated network connection from your premises to AWS for consistent, high-bandwidth, low-latency connectivity" },
   { "name": "AWS Site-to-Site VPN", "description": "Secure IPsec VPN connection between your on-premises network and AWS VPCs" },
   { "name": "AWS Transit Gateway", "description": "Central hub to connect multiple VPCs and on-premises networks via VPN or Direct Connect" },
@@ -417,7 +419,9 @@ deploy: [
   { "name": "Amazon MemoryDB", "description": "Redis-compatible, durable in-memory database for ultra-low latency applications" }
   ],
   security: [
-  { "name": "IAM", "description": "Your cornerstone for securely managing access to AWS services and resources" },
+  { "name": "IAM", "description": "Your cornerstone for securely managing access to AWS services and resources",
+    "technotes": "<ul><li><b>Basic IAM Best Practices</b></li><ul><li><b>Least privilege:</b> Grant only the permissions needed—nothing more.</li><li><b>Enable MFA:</b> Require multi-factor authentication for all users, especially the root account.</li><li><b>Audit with CloudTrail:</b> Monitor IAM changes and sign-in activity for anomalies and compliance.</li><li><b>Avoid root user:</b> Use the root account only for critical setup and recovery tasks.</li><li><b>Use IAM roles:</b> Prefer roles over IAM users for applications and AWS services.</li><li><b>Use IAM groups:</b> Assign permissions to groups instead of individual users.</li><li><b>Start with managed policies:</b> Begin with AWS managed policies, then tailor as needed.</li><li><b>Review and clean up:</b> Regularly remove unused users, roles, keys, and policies.</li><li><b>Use IAM Access Analyzer:</b> Identify overly permissive or unintended access paths.</li><li><b>Policy conditions:</b> Add context restrictions (IP, time, MFA requirement) to policies.</li><li><b>Rotate credentials:</b> Regularly rotate passwords and access keys.</li><li><b>Permissions boundaries:</b> Limit the maximum permissions that can be granted during delegation.</li><li><b>Federate access:</b> Use AWS IAM Identity Center or external IdPs to centralize user management.</li></ul><li><b>Advanced IAM Best Practices</b></li><ul><li><b>Temporary credentials:</b> Use roles or federation instead of long-term access keys.</li><li><b>Just-in-time access:</b> Grant time-bound permissions only when needed.</li><li><b>Secure access keys:</b> Store keys securely (e.g., Secrets Manager); never hard-code them.</li><li><b>Validate policies pre-deploy:</b> Use IAM Access Analyzer proactively to check policies before rollout.</li><li><b>Delegation safeguards:</b> Apply permissions boundaries to prevent privilege escalation in created roles.</li><li><b>RBAC + ABAC:</b> Combine role-based and attribute-based access for flexible, scalable control.</li><li><b>Strong password policy:</b> Enforce complexity, reuse prevention, and rotation where applicable.</li></ul></ul>"
+ },
   { "name": "IAM Access Analyzer", "description": "Fine-tune access with granular permissions (Tip: use this to give least privilege permissions!)" },
   { "name": "AWS Organizations", "description": "Manage and govern multiple AWS accounts" },
   { "name": "IAM Identity Center", "description": "Simplify workforce access across AWS accounts, services, and apps" },
@@ -425,7 +429,8 @@ deploy: [
   { "name": "AWS KMS", "description": "Your locksmith, managing cryptographic keys with finesse" },
   { "name": "AWS Secrets Manager", "description": "A secure vault, safeguarding and rotating your secrets (Tip: Use to get rid of hard-coded and plaintext secrets)" },
   { "name": "AWS Certificate Manager", "description": "Provision and deploy SSL/TLS certs" },
-  { "name": "AWS WAF", "description": "Block web threats like SQL injection and XSS" },
+  { "name": "AWS WAF", "description": "Block web threats like SQL injection and XSS, and add custom rules like country blocking",
+    "technotes":"AWS Web Application Firewall (AWS WAF) is a cloud-based security service that protects web applications from common threats like SQL injection, cross-site scripting (XSS), and bot attacks by filtering and monitoring HTTP(S) traffic. It allows users to create custom rules, apply AWS-managed rule groups, and set rate-based limits to block excessive requests or malicious behavior. Integrated with services like <b>CloudFront</b>, <b>API Gateway</b>, and <b>Application Load Balancer</b>, AWS WAF offers features such as <b>geo-blocking</b>, real-time monitoring via <b>CloudWatch</b>, and automatic scaling to handle traffic surges." },
   { "name": "AWS Shield", "description": "Guard against DDoS attacks" },
   { "name": "AWS Firewall Manager", "description": "Manage firewall rules, SGs, and Shield, across your AWS Organization" },
   { "name": "AWS Network Firewall", "description": "Fortify network security across Amazon VPCs by filtering traffic" },
@@ -510,7 +515,7 @@ serverless : [
   {
     "name": "Amazon API Gateway",
     "description": "Create, publish, and manage REST and WebSocket APIs for serverless applications",
-    "technotes":"supports <b>REST</b> (standard request-response over HTTP for CRUD operations), <b>HTTP</b> (lightweight APIs with flexible routing), and <b>WebSocket</b> (persistent, bidirectional connections for real-time apps like chat or gaming)"
+    "technotes":"supports <b>REST</b> (standard request-response over HTTP for CRUD operations), <b>HTTP</b> (lightweight APIs with flexible routing), and <b>WebSocket</b> (persistent, bidirectional connections for real-time apps like chat or gaming). <br>While API Gateway with Lambda is effective for real-time synchronous processing, it does not inherently offer decoupling between tiers or a durable queue. It also lacks native support for guaranteed exactly-once processing across asynchronous workloads."
   },
   {
     "name": "AWS Step Functions",
@@ -869,7 +874,72 @@ datastreams : [
     "name": "Amazon SNS",
     "description": "Pub/Sub messaging service for broadcasting streaming data to multiple subscribers in real time"
   }
+],
+"waf" : [
+  {
+    "name": "1. Operational Excellence",
+    "description": "Focuses on running and monitoring systems to deliver business value and continuously improve processes and procedures.",
+    "technotes": "Use Amazon CloudWatch to monitor application health and set up automated alerts for performance issues."
+  },
+  {
+    "name": "2. Security",
+    "description": "Emphasizes protecting data, systems, and assets through risk assessments and mitigation strategies.",
+    "technotes": "Enable multi-factor authentication (MFA) for all IAM users and encrypt sensitive data using AWS Key Management Service (KMS)."
+  },
+  {
+    "name": "3. Reliability",
+    "description": "Ensures workloads perform as intended and can recover quickly from failures.",
+    "technotes": "Deploy applications across multiple Availability Zones to ensure high availability and fault tolerance."
+  },
+  {
+    "name": "4. Performance Efficiency",
+    "description": "Uses computing resources efficiently to meet system requirements and adapt to changing demands.",
+    "technotes": "Use AWS Auto Scaling to automatically adjust compute resources based on traffic patterns."
+  },
+  {
+    "name": "5. Cost Optimization",
+    "description": "Helps avoid unnecessary costs and ensures you’re spending wisely on cloud resources.",
+    "technotes": "Use AWS Cost Explorer to identify underutilized EC2 instances and switch to smaller or spot instances."
+  },
+  {
+    "name": "6. Sustainability",
+    "description": "Encourages designing systems that minimize environmental impact and improve energy efficiency.",
+    "technotes": "Choose AWS Regions powered by renewable energy and optimize workloads to reduce compute time."
+  }
+],
+caf : [
+  {
+    "name": "1. Business Perspective",
+    "description": "Ensures that cloud investments align with business goals and accelerate digital transformation.",
+    "technotes": "Define KPIs and use AWS services like Cost Explorer to track cloud spending against business outcomes."
+  },
+  {
+    "name": "2. People Perspective",
+    "description": "Focuses on organizational culture, structure, and skills needed to support cloud adoption.",
+    "technotes": "Conduct training programs using AWS Skill Builder to upskill teams on cloud technologies."
+  },
+  {
+    "name": "3. Governance Perspective",
+    "description": "Helps manage cloud initiatives while minimizing risks and ensuring compliance.",
+    "technotes": "Implement guardrails with AWS Organizations and use AWS Config to enforce policy compliance."
+  },
+  {
+    "name": "4. Platform Perspective",
+    "description": "Guides the design and deployment of cloud infrastructure and applications.",
+    "technotes": "Use AWS CloudFormation to automate infrastructure provisioning and ensure consistency."
+  },
+  {
+    "name": "5. Security Perspective",
+    "description": "Ensures that cloud workloads meet security, compliance, and risk management requirements.",
+    "technotes": "Apply IAM best practices and use AWS Security Hub to monitor and improve your security posture."
+  },
+  {
+    "name": "6. Operations Perspective",
+    "description": "Focuses on managing and supporting cloud services to meet business needs.",
+    "technotes": "Use Amazon CloudWatch and AWS Systems Manager to monitor, troubleshoot, and optimize operations."
+  }
 ]
+
 
 
 
