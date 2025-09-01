@@ -292,16 +292,16 @@ deploy: [
 
 
 ,compute:[
-  { "name": "Amazon EC2", "description": "Scalable virtual servers in the cloud with a wide range of instance types for different workloads","technotes":"Put in a <u>cluster</u> if you are using in HPC (High Performance Computing)" },
+  { "name": "Amazon EC2", "description": "Scalable virtual servers in the cloud with a wide range of instance types for different workloads","technotes":"Put in a <u>cluster</u> if you are using in HPC (High Performance Computing)","billingnotes":"Linux is billed by the second, can have saving plans" },
   { "name": "Amazon EC2 Auto Scaling", "description": "Automatically adjusts EC2 capacity to maintain performance and optimize costs" },
   { "name": "Amazon EC2 Spot Instances", "description": "Cost-effective compute capacity for fault-tolerant workloads, available at up to 90% discount" },
   { "name": "Amazon Lightsail", "description": "Simplified cloud platform for building applications and websites with preconfigured resources" },
-  { "name": "AWS Lambda", "description": "Serverless compute service that runs code in response to events without provisioning servers" },
+  { "name": "AWS Lambda", "description": "Serverless compute service that runs code in response to events without provisioning servers","billingnotes":"can have saving plans"  },
   { "name": "AWS Fargate", "description": "Serverless compute engine for containers, eliminating the need to manage EC2 instances" },
   { "name": "Amazon ECS", "description": "Highly scalable container orchestration service for Docker containers" },
   { "name": "Amazon EKS", "description": "Managed Kubernetes service for running containerized applications using Kubernetes" },
   { "name": "AWS App Runner", "description": "Fully managed service to build and run containerized web applications and APIs" },
-  { "name": "AWS Batch", "description": "Efficient batch computing service for running large-scale parallel and high-performance jobs" },
+  { "name": "AWS Batch", "description": "Efficient batch computing service for running large-scale parallel and high-performance jobs" ,"billingnotes":"does not have saving plans" },
   { "name": "AWS Elastic Beanstalk", "description": "Platform-as-a-Service for deploying and scaling web applications automatically" },
   { "name": "AWS Outposts", "description": "Run AWS infrastructure and services on-premises for a consistent hybrid experience" },
   { "name": "AWS Wavelength", "description": "Delivers ultra-low latency applications for 5G devices by extending AWS infrastructure to telecom networks" },
@@ -392,7 +392,7 @@ deploy: [
 ,
   analytics: [
   { "name": "Amazon Athena", "description": "Serverless query service to analyze data in Amazon S3 using standard SQL" },
-  { "name": "Amazon EMR", "description": "Managed big data platform for processing vast amounts of data using open-source tools like Apache Spark, Hive, and Hadoop" },
+  { "name": "Amazon EMR", "description": "Processes a large number of data sets, Managed big data platform for processing vast amounts of data using open-source tools like Apache Spark, Hive, and Hadoop" },
   { "name": "Amazon OpenSearch Service", "description": "Managed search and analytics engine for log analytics, real-time application monitoring, and search use cases" },
   { "name": "Amazon QuickSight", "description": "Scalable business intelligence service for creating interactive dashboards and visualizations" },
   { "name": "AWS Data Pipeline", "description": "Service for processing and moving data between AWS compute and storage services on a scheduled basis" },
@@ -405,7 +405,7 @@ deploy: [
   database: 
    [
   { "name": "Amazon Aurora", "description": "High-performance managed relational database compatible with MySQL and PostgreSQL" },
-  { "name": "Amazon RDS", "description": "Managed relational database service supporting multiple engines like MySQL, PostgreSQL, Oracle, and SQL Server" },
+  { "name": "Amazon RDS", "description": "Managed relational database service supporting multiple engines like MySQL, PostgreSQL, Oracle, and SQL Server","technotes":"uses EBS as primary storage" },
   { "name": "Babelfish for PostgreSQL", "description": "lets you run SQL Server applications on PostgreSQL by adding T-SQL compatibility and support for SQL Server’s wire protocol."},
   { "name": "Amazon DynamoDB", "description": "Fully managed NoSQL database for key-value and document data with single-digit millisecond latency" },
   { "name": "Amazon DAX", "description": "Managed in-memory caching service for DynamoDB that delivers microsecond read performance by caching frequently accessed data" },
@@ -459,7 +459,7 @@ monitoring :[
   },
   {
     "name": "AWS X-Ray",
-    "description": "Distributed tracing service that helps analyze and debug applications, especially microservices"
+    "description": "Distributed tracing service that helps analyze and debug applications, especially <B>microservices</B>"
   },
   {
     "name": "Amazon Managed Grafana",
@@ -878,7 +878,7 @@ datastreams : [
 "waf" : [
   {
     "name": "1. Operational Excellence",
-    "description": "Focuses on running and monitoring systems to deliver business value and continuously improve processes and procedures.",
+    "description": "Focuses on <b>running</b> and <b>monitoring</b> systems to deliver business value and continuously improve processes and procedures.",
     "technotes": "Use Amazon CloudWatch to monitor application health and set up automated alerts for performance issues."
   },
   {
