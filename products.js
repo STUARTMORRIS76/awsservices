@@ -292,7 +292,7 @@ deploy: [
 
 
 ,compute:[
-  { "name": "Amazon EC2", "description": "Scalable virtual servers in the cloud with a wide range of instance types for different workloads","technotes":"Put in a <u>cluster</u> if you are using in HPC (High Performance Computing)","billingnotes":"Linux is billed by the second, can have saving plans" },
+  { "name": "Amazon EC2", "description": "Scalable virtual servers in the cloud with a wide range of instance types for different workloads","technotes":"Put in a <u>cluster</u> if you are using in HPC (High Performance Computing)","billingnotes":"<BR><B>Linux</B> is billed by the second,<BR>EC2 can have saving plans,<BR> <B>Elastic IP</B> addresses can increase EC2 costs if they are allocated but not in use, as AWS charges for unused Elastic IPs. Removing these unused addresses can help reduce overall expenses significantly." },
   { "name": "Amazon EC2 Auto Scaling", "description": "Automatically adjusts EC2 capacity to maintain performance and optimize costs" },
   { "name": "Amazon EC2 Spot Instances", "description": "Cost-effective compute capacity for fault-tolerant workloads, available at up to 90% discount" },
   { "name": "Amazon Lightsail", "description": "Simplified cloud platform for building applications and websites with preconfigured resources" },
@@ -355,8 +355,8 @@ deploy: [
 	storage: [
   { "name": "Amazon S3", "description": "Scalable object storage for any type of data with high durability and availability","technotes":"S3 can be put on CloudFront, <BR>when uploading over 100mb use multipart uploading" },
   { "name": "Amazon S3TA", "description": "Amazon S3 Transfer Acceleration can speed up content transfers to and from Amazon S3 for long-distance transfer of larger objects.","technotes":"S3TA improves transfer performance by routing traffic through Amazon CloudFront’s globally distributed Edge Locations and over AWS backbone networks, and by using network protocol optimizations.","billingnotes":"With S3TA, you pay only for transfers that are accelerated." },
-  { "name": "Amazon S3 Glacier", "description": "Low-cost archival storage designed for long-term data retention with retrieval options from milliseconds to hours" },
-  { "name": "Amazon EBS", "description": "Block storage volumes for use with Amazon EC2, offering low-latency performance and high availability" },
+  { "name": "Amazon S3 Glacier", "description": "Low-cost archival storage designed for long-term data retention with retrieval options from milliseconds to hours"},
+  { "name": "Amazon EBS", "description": "Block storage volumes for use with Amazon EC2, offering low-latency performance and high availability","technotes":"Deleting unused EBS volumes after terminating an EC2 instance helps save money because these volumes continue to incur charges even when the associated instance is stopped or terminated. By removing these unnecessary volumes, you can significantly reduce your monthly storage costs, as you only pay for the storage you actively use." },
   { "name": "Amazon EFS", "description": "Fully managed elastic file system for Linux workloads, accessible across multiple EC2 instances" },
   { "name": "Amazon FSx for Windows File Server", "description": "Managed Windows file system built on Windows Server, ideal for enterprise applications" },
   { "name": "Amazon FSx for Lustre", "description": "High-performance file system optimized for fast processing of workloads like machine learning and HPC" },
@@ -409,7 +409,7 @@ deploy: [
   { "name": "Babelfish for PostgreSQL", "description": "lets you run SQL Server applications on PostgreSQL by adding T-SQL compatibility and support for SQL Server’s wire protocol."},
   { "name": "Amazon DynamoDB", "description": "Fully managed NoSQL database for key-value and document data with single-digit millisecond latency" },
   { "name": "Amazon DAX", "description": "Managed in-memory caching service for DynamoDB that delivers microsecond read performance by caching frequently accessed data" },
-  { "name": "Amazon ElastiCache", "description": "In-memory caching service supporting Redis and Memcached for ultra-fast performance","technotes":"Applications - Game Leaderboards" },
+  { "name": "Amazon ElastiCache", "description": "In-memory caching service supporting Redis and Memcached, and Valkey for ultra-fast performance","technotes":"Applications - Game Leaderboards, Ehcache not supported" },
   { "name": "Amazon Redshift", "description": "Fully managed data warehouse for fast querying and analytics at scale" },
   { "name": "Amazon Neptune", "description": "Managed graph database service optimized for storing and querying highly connected data" },
   { "name": "Amazon DocumentDB", "description": "Managed document database service compatible with MongoDB workloads" },
@@ -711,7 +711,7 @@ networking: [
   },
   {
     "name": "Elastic Load Balancing (ELB)",
-    "description": "Distributes incoming traffic across multiple targets to ensure fault tolerance and scalability"
+    "description": "Distributes incoming traffic across multiple targets to ensure fault tolerance and scalability, <BR>Deleting unused Elastic Load Balancers (ELBs) helps save money by eliminating charges associated with resources that are not actively being used, which can accumulate over time. Each idle ELB can cost around $200 per year, so removing them reduces unnecessary expenses on your AWS bill."
   },
   {
     "name": "Application Load Balancer (ALB)",
