@@ -372,6 +372,10 @@ input:checked + .slider:before {
   <td><a href="#" onclick="loadCategory('container')"><i class="fas fa-boxes"></i> AWS Containers</a></td>
 </tr>
 <tr>
+  <td><a href="#" onclick="loadCategory('supportplan')"><i class="fas fa-headset"></i> AWS Support Plans</a></td>
+  <td></td>
+</tr>
+<tr>
   <td><a href="#" onclick="loadCategory('waf')"><i class="fas fa-layer-group"></i> AWS Well-Architected Framework</a></td>
   <td><a href="#" onclick="loadCategory('caf')"><i class="fas fa-cloud-upload-alt"></i> AWS Cloud Adoption Framework</a></td>
 </tr>
@@ -412,7 +416,9 @@ const categoryTitles = {
   serverless: "AWS Serverless",
   container: "AWS Containers",
   waf: "AWS Well-Architected Framework",
-  caf: "AWS Cloud Adoption Framework"
+  caf: "AWS Cloud Adoption Framework",
+  supportplan : "Support Plan",
+  tbd : "To Be Decided"
 };
 
 function setFontSize(size) {

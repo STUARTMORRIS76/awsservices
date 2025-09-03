@@ -876,6 +876,41 @@ datastreams : [
     "description": "Pub/Sub messaging service for broadcasting streaming data to multiple subscribers in real time"
   }
 ],
+
+"supportplan" : [
+  {
+    "name": "Basic Support",
+    "description": "Free support plan included with all AWS accounts.",
+    "technotes": "<ul><li>24/7 access to customer service</li><li>Access to AWS documentation, whitepapers, and forums</li><li>Limited Trusted Advisor checks</li><li>No technical support included</li></ul>",
+    "billingnotes": "Free of charge"
+  },
+  {
+    "name": "Developer Support",
+    "description": "Designed for early-stage development and testing environments.",
+    "technotes": "<ul><li>Email access to Cloud Support Associates during business hours</li><li>Response time: &lt; 24 hours for general guidance</li><li>Limited Trusted Advisor checks</li></ul>",
+    "billingnotes": "Starts at $29/month or 3% of monthly AWS usage, whichever is greater"
+  },
+  {
+    "name": "Business Support",
+    "description": "Recommended for production workloads requiring fast response and guidance.",
+    "technotes": "<ul><li>24/7 access via phone, chat, and email to Cloud Support Engineers</li><li>Response times: &lt; 24h (general), &lt; 12h (system impaired), &lt; 4h (production impaired), &lt; 1h (production down)</li><li>Full Trusted Advisor checks</li><li>Access to AWS Support API</li></ul>",
+    "billingnotes": "Starts at $100/month or tiered percentage of monthly usage: 10% of first $0–$10K, 7% of $10K–$80K, 5% of $80K–$250K, 3% over $250K"
+  },
+  {
+    "name": "Enterprise On-Ramp Support",
+    "description": "For businesses with critical workloads needing consultative guidance.",
+    "technotes": "<ul><li>All Business Support features</li><li>Consultative architectural guidance</li><li>Support Automation Workflows</li><li>One AWS Countdown engagement per year</li><li>Pool of Technical Account Managers</li></ul>",
+    "billingnotes": "Starts at $5,500/month or 10% of monthly AWS usage"
+  },
+  {
+    "name": "Enterprise Support",
+    "description": "For mission-critical workloads requiring dedicated support and strategic guidance.",
+    "technotes": "<ul><li>All Enterprise On-Ramp features</li><li>Designated Technical Account Manager (TAM)</li><li>Response time: &lt; 15 minutes for business-critical system down</li><li>Annual security and infrastructure reviews</li><li>Access to AWS Incident Detection and Response</li></ul>",
+    "billingnotes": "Starts at $15,000/month or tiered percentage of monthly usage: 10% of first $0–$150K, 7% of $150K–$500K, 5% of $500K–$1M, 3% over $1M"
+  }
+],
+"tbd" :[],
+
 "waf" : [
   {
     "name": "1. Operational Excellence",
