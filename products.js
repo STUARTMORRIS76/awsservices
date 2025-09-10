@@ -907,7 +907,14 @@ datastreams : [
     "description": "For mission-critical workloads requiring dedicated support and strategic guidance.",
     "technotes": "<ul><li>All Enterprise On-Ramp features</li><li>Designated Technical Account Manager (TAM)</li><li>Response time: &lt; 15 minutes for business-critical system down</li><li>Annual security and infrastructure reviews</li><li>Access to AWS Incident Detection and Response</li></ul>",
     "billingnotes": "Starts at $15,000/month or tiered percentage of monthly usage: 10% of first $0–$150K, 7% of $150K–$500K, 5% of $500K–$1M, 3% over $1M"
+  },
+  {
+    "name": "AWS Countdown",
+    "description": "is a support program that helps organizations prepare for and execute critical cloud events—like product launches or migrations—with expert guidance and minimal risk. It offers structured planning, readiness assessments, and real-time support to ensure smooth execution. Available in standard and premium tiers, Countdown gives teams access to AWS specialists, proven playbooks, and hands-on help tailored to the complexity of their event.",
+    "technotes": "<BR><B>AWS Countdown (Standard Tier)</B><BR>What it is: Guided support from your Technical Account Manager (TAM), including planning assistance, readiness checks, and coordination during your event.<BR><BR>Best for: Teams with internal cloud expertise who need validation and structured guidance.<BR><BR><B>AWS Countdown Premium</B><BR>What it is: Full-spectrum support from designated AWS engineers—from design to post-launch. Includes proactive guidance, access to subject matter experts (SMEs), and live event troubleshooting.<BR><BR>Best for: High-stakes events requiring deep technical involvement and real-time support.<BR><BR>",
+    "billingnotes": "<BR><B>AWS Countdown (Standard Tier)</B><BR>Availability: Included at no extra cost with the Enterprise Support plan.<BR><BR>Enterprise On-Ramp customers receive one free engagement per year<BR><BR><B>AWS Countdown Premium</B><BR>Offered as a monthly subscription for an additional fee.<BR><BR>Available to customers with Business Support, Enterprise On-Ramp, or Enterprise Support plans.<BR><BR>Recommended to subscribe 2–3 weeks before your critical event to allow for thorough planning.<BR><BR>"
   }
+
 ],
 "tbd" :[],
 
