@@ -319,10 +319,8 @@ deploy: [
     "name": "Amazon CloudFront",
     "description": "Global content delivery network (CDN) that securely delivers data, videos, applications, and APIs with low latency and high transfer speeds"
   },
-  {
-    "name": "AWS Global Accelerator",
-    "description": "Networking service that improves the availability and performance of your applications with static IP addresses and global routing"
-  },
+ 
+
   {
     "name": "Amazon Route 53",
     "description": "Highly available and scalable DNS web service for domain registration, routing, and health checks"
@@ -361,7 +359,10 @@ deploy: [
   { "name": "Amazon S3 Glacier", "description": "Low-cost archival storage designed for long-term data retention with retrieval options from milliseconds to hours"},
   { "name": "Amazon EBS", "description": "Block storage volumes for use with Amazon EC2, offering low-latency performance and high availability","technotes":"Deleting unused EBS volumes after terminating an EC2 instance helps save money because these volumes continue to incur charges even when the associated instance is stopped or terminated. By removing these unnecessary volumes, you can significantly reduce your monthly storage costs, as you only pay for the storage you actively use." },
   { "name": "Amazon EFS", "description": "Fully managed elastic file system for Linux workloads, accessible across multiple EC2 instances" },
-  { "name": "Amazon FSx for Windows File Server", "description": "Managed Windows file system built on Windows Server, ideal for enterprise applications" },
+{
+  "name": "Amazon FSx for Windows File Server",
+  "description": "<p><strong>Amazon FSx for Windows File Server</strong> is a fully managed Windows file system built on Windows Server, designed for enterprise-grade applications that require native Windows compatibility. It supports the <strong>SMB protocol</strong>, enabling seamless file sharing across Windows, Linux, and macOS clients. This makes it ideal for workloads like home directories, departmental shares, and business applications that rely on Windows file systems.</p>"
+},
   { "name": "Amazon FSx for Lustre", "description": "High-performance file system optimized for fast processing of workloads like machine learning and HPC" },
   { "name": "Amazon FSx for NetApp ONTAP", "description": "Fully managed file storage built on NetApp ONTAP, supporting advanced data management features" },
   { "name": "Amazon FSx for OpenZFS", "description": "Managed file system based on OpenZFS, designed for performance and data protection" },
@@ -447,7 +448,19 @@ deploy: [
   { "name": "Amazon Inspector", "description": "Discover workloads and scan them for software vulnerabilities" },
   { "name": "AWS CloudTrail", "description": "A meticulous recorder, logging user activity and API usage (Tip: push to CloudWatch Logs for tracking & to generate metrics and alerts)" },
   { "name": "AWS Config", "description": "A detailed observer, recording and evaluating configurations of AWS resources (Tip: use with SSM and Lambda for automated remediation)" },
-  { "name": "AWS Security Hub", "description": "Unified security command center, providing a comprehensive view of alerts and posture" },
+{
+  "name": "AWS Security Lake",
+  "description": "<p><strong>AWS Security Lake</strong> is a fully managed service that centralizes security data from cloud, on-premises, and third-party sources into a purpose-built data lake stored in your AWS account. It automatically normalizes this data using the <em>Open Cybersecurity Schema Framework (OCSF)</em>, making it easier to analyze and respond to threats across your organization.</p>",
+  "technotes": "<ul>\
+    <li><strong>Data Aggregation:</strong> Collects logs and events from AWS services like CloudTrail, VPC Flow Logs, GuardDuty, and more.</li>\
+    <li><strong>Standardization:</strong> Uses OCSF to normalize data across sources for consistent analysis.</li>\
+    <li><strong>Storage:</strong> Built on Amazon S3, giving you full control and scalability.</li>\
+    <li><strong>Integration:</strong> Compatible with analytics tools like Amazon Athena, OpenSearch, and third-party SIEMs.</li>\
+    <li><strong>Multi-Region & Multi-Account:</strong> Supports centralized management across AWS accounts and regions.</li>\
+    <li><strong>Security Insights:</strong> Enables faster threat detection, investigation, and response.</li>\
+  </ul>"
+}, 
+ { "name": "AWS Security Hub", "description": "Unified security command center, providing a comprehensive view of alerts and posture" },
   { "name": "AWS Audit Manager", "description": "Continuously auditing AWS usage against prebuilt and custom frameworks" },
   { "name": "AWS Artifact", "description": "Your gateway to compliance reports from AWS and ISVs" },
   { "name": "AWS Control Tower", "description": "Account deployment and governance" }
@@ -526,14 +539,77 @@ serverless : [
     "description": "Create, publish, and manage REST and WebSocket APIs for serverless applications",
     "technotes":"supports <b>REST</b> (standard request-response over HTTP for CRUD operations), <b>HTTP</b> (lightweight APIs with flexible routing), and <b>WebSocket</b> (persistent, bidirectional connections for real-time apps like chat or gaming). <br>While API Gateway with Lambda is effective for real-time synchronous processing, it does not inherently offer decoupling between tiers or a durable queue. It also lacks native support for guaranteed exactly-once processing across asynchronous workloads."
   },
-  {
+
+{
+  "name": "AWS API Gateway – Resource Policy",
+  "description": "<p><strong>Resource Policies</strong> in <strong>AWS API Gateway</strong> are JSON-based policy documents that control access to your API Gateway resources. They allow you to define who can invoke your APIs based on source IPs, AWS accounts, VPCs, or IAM roles, without needing to modify individual method-level permissions.</p>",
+  "technotes": "<ul>\
+    <li><strong>Purpose:</strong> Restrict or allow access to an entire API Gateway endpoint based on conditions like IP address, VPC, or AWS principal.</li>\
+    <li><strong>Format:</strong> Follows AWS Identity and Access Management (IAM) policy syntax.</li>\
+    <li><strong>Common Use Cases:</strong>\
+      <ul>\
+        <li>Allow access only from a specific VPC or VPC endpoint.</li>\
+        <li>Restrict access to known IP ranges (e.g., corporate network).</li>\
+        <li>Permit only specific AWS accounts or IAM roles to invoke the API.</li>\
+      </ul>\
+    </li>\
+    <li><strong>Example:</strong> A resource policy that allows access to an API only from a specific VPC endpoint:</li>\
+  </ul>\
+  <pre>{\
+    \"Version\": \"2012-10-17\",\
+    \"Statement\": [\
+      {\
+        \"Effect\": \"Allow\",\
+        \"Principal\": \"*\",\
+        \"Action\": \"execute-api:Invoke\",\
+        \"Resource\": \"arn:aws:execute-api:region:account-id:api-id/*\",\
+        \"Condition\": {\
+          \"StringEquals\": {\
+            \"aws:SourceVpce\": \"vpce-1234567890abcdef0\"\
+          }\
+        }\
+      }\
+    ]\
+  }</pre>\
+  <p>Resource policies are especially useful for public APIs that need controlled exposure without requiring user authentication.</p>"
+}
+
+ , {
     "name": "AWS Step Functions",
     "description": "Serverless workflow service for coordinating distributed applications using visual workflows"
   },
   {
-    "name": "Amazon EventBridge",
-    "description": "Event bus for building event-driven applications that integrate AWS services and SaaS apps"
-  },
+  "name": "Amazon EventBridge",
+  "description": "<p><strong>Amazon EventBridge</strong> is a service that helps different parts of your system talk to each other by sending and receiving messages called events. You can use it to connect AWS services, third-party apps, or your own software — and set up rules for what should happen when certain events occur.</p>\
+  <p>You can also use EventBridge like a scheduler. It lets you run tasks at specific times using <strong>cron jobs</strong> or <strong>rate expressions</strong> (like every 5 minutes or every day at 9 AM). These scheduled tasks can trigger things like <strong>AWS Fargate</strong> containers, which run code without needing to manage servers.</p>\
+  <p>In short, EventBridge helps automate your system, respond to changes, and run tasks on a schedule — all without needing to build complex connections between services.</p>",
+  "technotes": "<ul>\
+    <li><strong>Event Buses:</strong> Channels that receive and route events. You can use the default bus, create your own, or use partner buses from SaaS providers.</li>\
+    <li><strong>Rules:</strong> Define what should happen when an event matches certain conditions — like triggering a Lambda function or starting a Fargate task.</li>\
+    <li><strong>Targets:</strong> The services that respond to events, such as Lambda, Step Functions, SNS, SQS, and Fargate.</li>\
+    <li><strong>Scheduled Events:</strong> Use <code>cron</code> or <code>rate</code> expressions to run tasks on a schedule — like a built-in task scheduler.</li>\
+    <li><strong>Fargate Integration:</strong> You can trigger Fargate tasks directly from EventBridge, which is great for running containers on demand.</li>\
+    <li><strong>Schema Registry:</strong> Automatically discovers and stores the structure of your events to help with development and validation.</li>\
+    <li><strong>Use Case:</strong> Automate workflows, decouple microservices, schedule jobs, or respond to changes in AWS services or third-party apps.</li>\
+    <li><strong>Example:</strong> A rule runs every night at midnight to start a Fargate task that processes daily sales data and uploads a report to S3.</li>\
+  </ul>"
+},
+{
+  "name": "Amazon EventBridge Scheduler",
+  "description": "<p><strong>Amazon EventBridge Scheduler</strong> is a service that lets you run tasks automatically at specific times. You can schedule one-time or recurring actions — like calling an API, starting a Lambda function, or launching a Fargate task — without needing to manage cron jobs or custom scripts.</p>\
+  <p>It’s great for automating things like daily reports, backups, reminders, or any job that needs to run on a schedule.</p>",
+  "technotes": "<ul>\
+    <li><strong>Flexible Scheduling:</strong> Supports both one-time and recurring schedules using <code>cron</code> and <code>rate</code> expressions.</li>\
+    <li><strongTarget Support:</strong> Can trigger over 270 AWS services including Lambda, Step Functions, ECS (Fargate), SQS, and more.</li>\
+    <li><strong>Time Zones:</strong> Lets you set schedules in specific time zones, so you don’t have to convert everything to UTC.</li>\
+    <li><strong>Retry Policies:</strong> Automatically retries failed tasks based on your settings.</li>\
+    <li><strong>Input Payloads:</strong> You can pass custom data to the target when the schedule runs.</li>\
+    <li><strong>Use Case:</strong> Automate a daily Lambda job that cleans up old files, or trigger a Fargate task every Monday at 9 AM to generate reports.</li>\
+    <li><strong>Example:</strong> Schedule a Lambda function to run every day at midnight using <code>cron(0 0 * * ? *)</code>.</li>\
+  </ul>\
+  <p><em>Tip:</em> EventBridge Scheduler is separate from regular EventBridge rules — it’s built specifically for time-based automation.</p>"
+}
+,
   {
     "name": "Amazon SNS",
     "description": "Pub/Sub messaging service for decoupling microservices and sending notifications"
@@ -609,9 +685,26 @@ management:[
     "description": "A low-cost, standalone directory based on Samba, suitable for small AD-compatible workloads."
   },
   {
-    "name": "Amazon Cognito",
-    "description": "Provides user authentication, authorization, and user management for web and mobile apps."
-  },
+  "name": "Amazon Cognito",
+  "description": "<p><strong>Amazon Cognito</strong> is a managed authentication and authorization service that enables secure user sign-up, sign-in, and access control for web and mobile applications. It consists of two main components: <strong>User Pools</strong> and <strong>Identity Pools</strong>, each serving distinct purposes in identity management.</p>",
+  "technotes": "<h3>User Pools</h3>\
+  <p>User Pools are user directories that handle authentication. They allow users to sign up, sign in, and manage their profiles. Cognito User Pools support social identity providers (like Google, Facebook, Apple), SAML, and OpenID Connect.</p>\
+  <ul>\
+    <li><strong>Use Case:</strong> Building a login system for your app with email/password or social login.</li>\
+    <li><strong>Example:</strong> A mobile app that lets users register and log in using Facebook or Google accounts.</li>\
+    <li><strong>Features:</strong> Multi-factor authentication (MFA), password recovery, device tracking, and custom authentication flows.</li>\
+  </ul>\
+  <h3>Identity Pools</h3>\
+  <p>Identity Pools provide temporary AWS credentials to authenticated users so they can access AWS services like S3, DynamoDB, or Lambda. They support both authenticated and unauthenticated (guest) access.</p>\
+  <ul>\
+    <li><strong>Use Case:</strong> Granting users access to AWS resources after authentication.</li>\
+    <li><strong>Example:</strong> A photo-sharing app that lets users upload images to an S3 bucket after logging in.</li>\
+    <li><strong>Features:</strong> Fine-grained IAM roles, support for federated identities, and guest access.</li>\
+  </ul>\
+  <p><em>Tip:</em> You can use both together — User Pools for authentication and Identity Pools for authorization to AWS resources.</p>\
+  <p>Learn more from the <a href='https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-scenarios.html' target='_blank'>official AWS Cognito scenarios guide</a>.</p>"
+}
+,
   {
     "name": "AWS Billing and Cost Management",
     "description": "Suite of tools to manage billing, payments, invoices, and optimize cloud spending"
@@ -698,10 +791,20 @@ networking: [
     "name": "Amazon Route 53",
     "description": "Highly available and scalable DNS service with domain registration, routing policies, and health checks"
   },
-  {
-    "name": "AWS Global Accelerator",
-    "description": "Improves application availability and performance using static IPs and global routing over the AWS network"
-  },
+   {
+  "name": "AWS Global Accelerator",
+  "description": "<p><strong>AWS Global Accelerator</strong> is a networking service that improves the availability and performance of your applications with global users. It uses the AWS global network infrastructure to route traffic through optimal paths, reducing latency and increasing reliability.</p>",
+  "technotes": "<ul>\
+    <li><strong>Global Anycast IPs:</strong> Provides two static IP addresses that act as fixed entry points to your application, regardless of region.</li>\
+    <li><strong>Traffic Distribution:</strong> Automatically routes user traffic to the nearest healthy endpoint using health checks and routing algorithms.</li>\
+    <li><strong>Supported Endpoints:</strong> Works with Application Load Balancers, Network Load Balancers, EC2 instances, and Elastic IPs.</li>\
+    <li><strong>Use Case:</strong> Ideal for latency-sensitive applications like gaming, media streaming, or financial services that require fast and reliable global access.</li>\
+    <li><strong>Failover & High Availability:</strong> Automatically reroutes traffic away from unhealthy endpoints to maintain uptime.</li>\
+    <li><strong>Security:</strong> Integrates with AWS Shield and AWS WAF for DDoS protection and traffic filtering.</li>\
+  </ul>\
+  <p><em>Example:</em> A global e-commerce platform uses Global Accelerator to ensure customers from Europe, Asia, and North America experience fast and consistent performance by routing them to the nearest regional endpoint.</p>"
+}
+,
   {
     "name": "AWS PrivateLink",
     "description": "Provides private connectivity between VPCs and AWS services without exposing traffic to the public internet"
@@ -924,7 +1027,26 @@ datastreams : [
   }
 
 ],
-"tbd" :[],
+"generalnetworking" :[
+{
+  "name": "Essential AWS Ports for Solutions Architect Associate Exam",
+  "description": "<p>These are the most commonly referenced ports in the AWS Certified Solutions Architect – Associate exam. They relate to EC2 access, web hosting, database connectivity, and file sharing.</p>",
+  "technotes": "<table border='1' cellpadding='6' cellspacing='0'>\
+    <thead><tr><th>Port</th><th>Protocol</th><th>Use Case</th></tr></thead>\
+    <tbody>\
+      <tr><td>22</td><td>SSH</td><td>Remote access to Linux EC2 instances</td></tr>\
+      <tr><td>3389</td><td>RDP</td><td>Remote access to Windows EC2 instances</td></tr>\
+      <tr><td>80</td><td>HTTP</td><td>Standard web traffic</td></tr>\
+      <tr><td>443</td><td>HTTPS</td><td>Secure web traffic</td></tr>\
+      <tr><td>3306</td><td>MySQL</td><td>Amazon RDS or Aurora MySQL</td></tr>\
+      <tr><td>5432</td><td>PostgreSQL</td><td>Amazon RDS or Aurora PostgreSQL</td></tr>\
+      <tr><td>1433</td><td>MS SQL Server</td><td>Amazon RDS for SQL Server</td></tr>\
+      <tr><td>445</td><td>SMB</td><td>Amazon FSx for Windows File Server</td></tr>\
+      <tr><td>53</td><td>DNS</td><td>Domain name resolution (UDP/TCP)</td></tr>\
+    </tbody>\
+  </table>"
+}
+],
 
 "waf" : [
   {
