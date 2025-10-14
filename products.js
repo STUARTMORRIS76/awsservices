@@ -355,7 +355,13 @@ deploy: [
 
 	storage: [
   { "name": "Amazon S3", "description": "Scalable object storage for any type of data with high durability and availability","technotes":"S3 can be put on CloudFront, <BR>when uploading over 100mb use multipart uploading<BR><h2>🔐 Server-Side Encryption (SSE)</h2><ul><li><strong>SSE-S3</strong>: Amazon S3 manages the encryption keys.</li><li><strong>SSE-KMS</strong>: Uses AWS Key Management Service (KMS) keys for more control and <b>auditing</b></li><li><strong>DSSE-KMS</strong>: Dual-layer encryption using AWS KMS keys for enhanced security.</li><li><strong>SSE-C</strong>: Customer provides their own encryption keys; AWS does not store them.</li></ul><h2>🧠 Client-Side Encryption</h2><ul><li>Data is encrypted before uploading to S3.</li><li>Users manage their own encryption keys and algorithms.</li><li>Requires custom implementation or use of AWS SDKs with encryption libraries.</li></ul>" },
-  { "name": "Amazon S3TA", "description": "Amazon S3 Transfer Acceleration can speed up content transfers to and from Amazon S3 for long-distance transfer of larger objects.","technotes":"S3TA improves transfer performance by routing traffic through Amazon CloudFront’s globally distributed Edge Locations and over AWS backbone networks, and by using network protocol optimizations.","billingnotes":"With S3TA, you pay only for transfers that are accelerated." },
+ 
+{
+  "name": "S3 Access Points",
+  "description": "An access point is a hostname that can point to a carefully defined subset of objects in a bucket. Depending on how you configure your access points, clients invoking the hostname will be able to read or write only the data you allow and only as long as you allow it.",
+  "technotes": "<p><strong>S3 Access Points</strong> provide a scalable and secure way to manage access to shared datasets. Each access point has its own policy, enabling fine-grained permissions tailored to specific applications or users. They can be restricted to VPCs for private access and simplify access management in multi-tenant environments.</p>\n\n<p><strong>Example: Creating an S3 Access Point using AWS CLI</strong></p>\n<pre><code>aws s3control create-access-point \\\n  --account-id 123456789012 \\\n  --name my-access-point \\\n  --bucket my-bucket-name \\\n  --vpc-configuration VpcId=vpc-abc123</code></pre>\n\n<p>This command creates an access point named <code>my-access-point</code> for the bucket <code>my-bucket-name</code>, scoped to the VPC <code>vpc-abc123</code>. You can then attach a policy to control access behavior.</p>"
+},
+ { "name": "Amazon S3TA", "description": "Amazon S3 Transfer Acceleration can speed up content transfers to and from Amazon S3 for long-distance transfer of larger objects.","technotes":"S3TA improves transfer performance by routing traffic through Amazon CloudFront’s globally distributed Edge Locations and over AWS backbone networks, and by using network protocol optimizations.","billingnotes":"With S3TA, you pay only for transfers that are accelerated." },
   { "name": "Amazon S3 Glacier", "description": "Low-cost archival storage designed for long-term data retention with retrieval options from milliseconds to hours"},
   { "name": "Amazon EBS", "description": "Block storage volumes for use with Amazon EC2, offering low-latency performance and high availability","technotes":"Deleting unused EBS volumes after terminating an EC2 instance helps save money because these volumes continue to incur charges even when the associated instance is stopped or terminated. By removing these unnecessary volumes, you can significantly reduce your monthly storage costs, as you only pay for the storage you actively use." },
   { "name": "Amazon EFS", "description": "Fully managed elastic file system for Linux workloads, accessible across multiple EC2 instances" },
@@ -618,6 +624,13 @@ serverless : [
     "name": "Amazon SQS",
     "description": "Message queuing service for decoupling and scaling microservices, distributed systems, and serverless apps"
   },
+{
+  "name": "Amazon MQ",
+  "description": "<p><strong>Amazon MQ</strong> is a managed message broker service for <em>Apache ActiveMQ</em> and <em>RabbitMQ</em> that makes it easy to set up and operate message brokers in the cloud. It supports industry-standard messaging protocols including <code>AMQP</code>, <code>MQTT</code>, <code>OpenWire</code>, and <code>STOMP</code>, enabling seamless integration with existing applications.</p>",
+  "technotes": "<p><strong>Amazon MQ</strong> is ideal for migrating messaging workloads to the cloud without rewriting code. It supports protocols like AMQP, MQTT, OpenWire, and STOMP, making it compatible with a wide range of existing messaging clients.</p>\n\n<p>Amazon MQ automatically handles provisioning, patching, and failure recovery, and integrates with AWS services like CloudWatch for monitoring and IAM for access control.</p>\n\n<p><strong>Example: Creating an Amazon MQ broker using AWS CLI</strong></p>\n<pre><code>aws mq create-broker \\\n  --broker-name MyBroker \\\n  --engine-type ActiveMQ \\\n  --engine-version 5.17.6 \\\n  --host-instance-type mq.t3.micro \\\n  --users Username=admin,Password=YourSecurePassword \\\n  --deployment-mode SINGLE_INSTANCE \\\n  --publicly-accessible</code></pre>\n\n<p>This command creates a single-instance ActiveMQ broker named <code>MyBroker</code> with a public endpoint. You can customize deployment mode, engine type, and access settings based on your needs.</p>"
+}
+
+,
   {
     "name": "AWS Fargate",
     "description": "Serverless compute engine for containers that eliminates the need to manage EC2 instances"
@@ -801,9 +814,11 @@ networking: [
     <li><strong>Use Case:</strong> Ideal for latency-sensitive applications like gaming, media streaming, or financial services that require fast and reliable global access.</li>\
     <li><strong>Failover & High Availability:</strong> Automatically reroutes traffic away from unhealthy endpoints to maintain uptime.</li>\
     <li><strong>Security:</strong> Integrates with AWS Shield and AWS WAF for DDoS protection and traffic filtering.</li>\
+    <li><strong>Blue-Green Deployments:</strong> Supports seamless traffic shifting between production and staging environments, enabling safer application updates with minimal downtime.</li>\
   </ul>\
   <p><em>Example:</em> A global e-commerce platform uses Global Accelerator to ensure customers from Europe, Asia, and North America experience fast and consistent performance by routing them to the nearest regional endpoint.</p>"
 }
+
 ,
   {
     "name": "AWS PrivateLink",
