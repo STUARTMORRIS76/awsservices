@@ -341,7 +341,7 @@ input:checked + .slider:before {
 </tr>
 <tr>
   <td><a href="#" onclick="loadCategory('compute')"><i class="fas fa-microchip"></i> AWS Compute</a></td>
-  <td><a href="#" onclick="loadCategory('networking')"><i class="fas fa-share-alt"></i> AWS Resilient Networking</a></td>
+  <td><a href="#" onclick="loadCategory('resilient')"><i class="fas fa-share-alt"></i> AWS Resilient Networking</a></td>
 </tr>
 <tr>
   <td><a href="#" onclick="loadCategory('storage')"><i class="fas fa-database"></i> AWS Storage</a></td>
@@ -352,7 +352,7 @@ input:checked + .slider:before {
   <td><a href="#" onclick="loadCategory('contentdelivery')"><i class="fas fa-broadcast-tower"></i> AWS Content Delivery</a></td>
 </tr>
 <tr>
- <td><a href="#" onclick="loadCategory('hybrid')"><i class="fas fa-project-diagram"></i> AWS Hybrid</a></td>
+ <td><a href="#" onclick="loadCategory('hybrid')"><i class="fas fa-cloud-upload-alt"></i><i class="fas fa-grip-lines"></i><i class="fas fa-city"></i> AWS Hybrid</a></td>
   <td><a href="#" onclick="loadCategory('deploy')"><i class="fas fa-rocket"></i> AWS Deployment</a></td>
 </tr>
 <tr>
@@ -403,6 +403,7 @@ let currentCategory = null;
 const categoryTitles = {
   compute: "AWS Compute",
   networking: "AWS Networking",
+  resilient: "AWS Resilient Networking",
   storage: "AWS Storage",
   database: "AWS Database",
   disaster: "AWS Disaster Recovery",
