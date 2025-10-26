@@ -85,9 +85,11 @@ ai: [
 
 ,container: [
   {
-    "name": "Amazon ECS",
-    "description": "Highly scalable container orchestration service for running Docker containers on AWS"
-  },
+  "name": "Amazon ECS",
+  "description": "<p>Amazon Elastic Container Service (ECS) is a scalable, fully managed container orchestration service that integrates tightly with AWS infrastructure. It consists of <strong>clusters</strong> (logical resource pools), <strong>task definitions</strong> (container blueprints), <strong>tasks</strong> (running containers), and <strong>services</strong> (long-running task managers). ECS supports both <em>Fargate</em> (serverless) and <em>EC2</em> (self-managed) launch types, allowing flexibility in how workloads are deployed and managed.</p>",
+  "technotes": "<p>Common ECS service metrics available in Amazon CloudWatch include:</p><ul><li><strong>ECSServiceAverageCPUUtilization</strong>: Average percentage of CPU units consumed by tasks in the service.</li><li><strong>ECSServiceAverageMemoryUtilization</strong>: Average percentage of memory used by tasks in the service.</li><li><strong>ECSServiceDesiredTaskCount</strong>: Number of tasks the service is configured to maintain.</li><li><strong>ECSServiceRunningTaskCount</strong>: Number of tasks currently running in the service.</li><li><strong>ECSServicePendingTaskCount</strong>: Number of tasks waiting to be placed or started.</li><li><strong>ECSServiceDeploymentCount</strong>: Number of active deployments associated with the service.</li><li><strong>ECSServiceTaskSetCount</strong>: Number of task sets in the service, relevant for blue/green deployments.</li><li><strong>ALBRequestCountPerTarget</strong>: Number of requests received per target in an Application Load Balancer target group linked to the ECS service.</li></ul><p>These metrics are essential for monitoring performance, scaling behavior, and deployment health in ECS environments.</p>"
+}
+,
   {
     "name": "Amazon ECS Anywhere",
     "description": "Extends Amazon ECS to run containers on customer-managed infrastructure outside AWS"
@@ -301,7 +303,12 @@ deploy: [
   { "name": "Amazon EC2 Spot Instances", "description": "Cost-effective compute capacity for fault-tolerant workloads, available at up to 90% discount" },
   { "name": "Amazon Lightsail", "description": "Simplified cloud platform for building applications and websites with preconfigured resources" },
   { "name": "AWS Lambda", "description": "Serverless compute service that runs code in response to events without provisioning servers","billingnotes":"can have saving plans"  },
-  { "name": "AWS Fargate", "description": "Serverless compute engine for containers, eliminating the need to manage EC2 instances" },
+ {
+  "name": "AWS Fargate",
+  "description": "<p>AWS Fargate is a serverless compute engine for containers that works with Amazon ECS and Amazon EKS. It eliminates the need to provision, configure, or scale virtual machines, allowing developers to focus on building applications without managing infrastructure.</p><p>Fargate runs containers in isolated compute environments and automatically handles task placement, scaling, and resource allocation. It integrates with IAM for security, CloudWatch for observability, and supports both EC2 networking modes and VPC integration for secure communication.</p><p>Fargate supports persistent storage through <strong>Amazon EFS</strong> (Elastic File System), allowing containers to share data across tasks and retain state. While <strong>Amazon EBS</strong> (Elastic Block Store) is not directly supported for Fargate tasks, EFS provides scalable, elastic storage ideal for stateless and stateful workloads.</p>",
+  "technotes": "<p>Key operational metrics for AWS Fargate tasks include:</p><ul><li><strong>CPUUtilized</strong>: Amount of CPU used by the container task, measured in vCPU seconds.</li><li><strong>MemoryUtilized</strong>: Memory consumed by the task, measured in MiB.</li><li><strong>NetworkRxBytes</strong>: Volume of incoming network traffic to the container.</li><li><strong>NetworkTxBytes</strong>: Volume of outgoing network traffic from the container.</li><li><strong>StorageReadBytes</strong>: Amount of data read from ephemeral storage.</li><li><strong>StorageWriteBytes</strong>: Amount of data written to ephemeral storage.</li></ul><p>These metrics are available in CloudWatch Container Insights and help monitor performance, troubleshoot issues, and optimize resource usage for Fargate-based workloads.</p>"
+},
+
   { "name": "Amazon ECS", "description": "Highly scalable container orchestration service for Docker containers" },
   { "name": "Amazon EKS", "description": "Managed Kubernetes service for running containerized applications using Kubernetes" },
   { "name": "AWS App Runner", "description": "Fully managed service to build and run containerized web applications and APIs" },
@@ -470,6 +477,24 @@ deploy: [
   { "name": "AWS Audit Manager", "description": "Continuously auditing AWS usage against prebuilt and custom frameworks" },
   { "name": "AWS Artifact", "description": "Your gateway to compliance reports from AWS and ISVs" },
   { "name": "AWS Control Tower", "description": "Account deployment and governance" }
+],
+resilient : [
+  {
+    "name": "Amazon SNS",
+    "description": "Pub/Sub messaging service for decoupling microservices and sending notifications"
+  },
+  {
+  "name": "Amazon SQS",
+  "description": "<p>Message queuing service that supports decoupled, scalable data streaming between distributed systems.</p><p>Amazon SQS offers two queue types: <strong>Standard queues</strong> (high throughput, at-least-once delivery, best-effort ordering) and <strong>FIFO queues</strong> (first-in-first-out delivery with exactly-once processing). By default, FIFO queues support up to 3,000 messages per second with batching or up to 300 messages per second without batching.</p><p>SQS queues are accessed via HTTPS endpoints, and each queue has a unique URL. AWS enforces limits such as message size (up to 256 KB), retention period (1 minute to 14 days), and throughput quotas that vary by queue type and region.</p>",
+  "technotes": "<p><strong>Polling Behavior and Cost:</strong></p><p>Amazon SQS supports two polling modes for retrieving messages:</p><ul><li><strong>Short polling</strong>: Returns immediately, even if no messages are available. This can result in more empty responses and higher costs due to increased API calls.</li><li><strong>Long polling</strong>: Waits up to 20 seconds for messages to arrive before returning a response. This reduces the number of empty responses and is more cost-efficient for high-throughput or bursty workloads.</li></ul><p>Each poll request counts as a billable request. Long polling is generally recommended to reduce cost and improve efficiency.</p><p>Amazon SQS integrates with CloudWatch to expose key operational metrics:</p><ul><li><strong>NumberOfMessagesSent</strong>: Count of messages added to the queue.</li><li><strong>NumberOfMessagesReceived</strong>: Count of messages retrieved from the queue.</li><li><strong>NumberOfMessagesDeleted</strong>: Count of messages successfully deleted after processing.</li><li><strong>ApproximateNumberOfMessagesVisible</strong>: Number of messages available for retrieval.</li><li><strong>ApproximateNumberOfMessagesNotVisible</strong>: Messages that are being processed and not currently visible to consumers.</li><li><strong>ApproximateAgeOfOldestMessage</strong>: Age of the oldest unprocessed message in seconds.</li><li><strong>SentMessageSize</strong>: Size of messages sent to the queue, useful for monitoring payload trends.</li></ul><p>These metrics help monitor queue health, throughput, and latency, and are essential for scaling and debugging distributed applications.</p>"
+}
+
+,
+{
+  "name": "Amazon MQ",
+  "description": "<p><strong>Amazon MQ</strong> is a managed message broker service for <em>Apache ActiveMQ</em> and <em>RabbitMQ</em> that makes it easy to set up and operate message brokers in the cloud. It supports industry-standard messaging protocols including <code>AMQP</code>, <code>MQTT</code>, <code>OpenWire</code>, and <code>STOMP</code>, enabling seamless integration with existing applications.</p>",
+  "technotes": "<p><strong>Amazon MQ</strong> is ideal for migrating messaging workloads to the cloud without rewriting code. It supports protocols like AMQP, MQTT, OpenWire, and STOMP, making it compatible with a wide range of existing messaging clients.</p>\n\n<p>Amazon MQ automatically handles provisioning, patching, and failure recovery, and integrates with AWS services like CloudWatch for monitoring and IAM for access control.</p>\n\n<p><strong>Example: Creating an Amazon MQ broker using AWS CLI</strong></p>\n<pre><code>aws mq create-broker \\\n  --broker-name MyBroker \\\n  --engine-type ActiveMQ \\\n  --engine-version 5.17.6 \\\n  --host-instance-type mq.t3.micro \\\n  --users Username=admin,Password=YourSecurePassword \\\n  --deployment-mode SINGLE_INSTANCE \\\n  --publicly-accessible</code></pre>\n\n<p>This command creates a single-instance ActiveMQ broker named <code>MyBroker</code> with a public endpoint. You can customize deployment mode, engine type, and access settings based on your needs.</p>"
+}
 ],
 monitoring :[
   {
@@ -845,9 +870,10 @@ networking: [
     "description": "Layer 7 load balancer that routes HTTP/HTTPS traffic based on content and supports advanced routing features"
   },
   {
-    "name": "Network Load Balancer (NLB)",
-    "description": "Layer 4 load balancer optimized for high-performance TCP traffic and static IP support"
-  },
+  "name": "AWS Network Load Balancer",
+  "description": "<p>High-performance Layer 4 load balancer for TCP/UDP traffic,  *EXAM NOTE* Targets most likely going be <b>private IPs</b> as it is an AWS VPC</p>",
+  "technotes": "<p>AWS NLB operates at Layer 4 of the OSI model, meaning it routes traffic based on IP address and port rather than application-level data. It’s designed to handle millions of requests per second with ultra-low latency.</p><p>NLB targets are typically EC2 instances or IP addresses within private subnets. When a client sends traffic to the NLB, it selects a healthy target from its target group using algorithms like round-robin or flow hash. The traffic is then forwarded directly to the target’s <b>private IP address</b>, preserving the original source IP. This makes it ideal for applications that need to see the client’s IP or require high-performance TCP/UDP handling.</p>"
+},
   {
     "name": "Gateway Load Balancer (GLB)",
     "description": "Distributes traffic to third-party virtual appliances for deep packet inspection and security services"
@@ -866,9 +892,11 @@ networking: [
     "description": "Provides private access to AWS services like S3 and DynamoDB using route tables within your VPC"
   },
   {
-    "name": "NAT Gateway",
-    "description": "Enables instances in a private subnet to connect to the internet or other AWS services without exposing them"
-  },
+  "name": "NAT Gateway",
+  "description": "<p>Enables instances in a private subnet to connect to the internet or other AWS services without exposing them.</p><p>A NAT Gateway is deployed in a public subnet within a VPC and is associated with an Elastic IP address. It acts as a bridge, allowing outbound traffic from private subnets to reach the internet while blocking inbound connections initiated from outside. This setup ensures secure and scalable internet access for resources that should remain private.</p>",
+  "technotes": "<p>To update EC2 instances in a private subnet (e.g., installing OS patches or downloading software packages), the NAT Gateway allows outbound internet access while keeping the instances unreachable from the public internet. The EC2 instances route their traffic through a private subnet route table that points to the NAT Gateway as the default route. The NAT Gateway then forwards the traffic to the internet using its Elastic IP, enabling secure downloads and updates without exposing the EC2 instances directly.</p>"
+}
+,
   {
     "name": "Internet Gateway",
     "description": "Allows communication between instances in your VPC and the internet"
@@ -878,9 +906,10 @@ networking: [
     "description": "EC2-based alternative to NAT Gateway for outbound internet access from private subnets"
   },
   {
-    "name": "Security Groups",
-    "description": "Virtual firewalls that control inbound and outbound traffic to AWS resources at the instance level"
-  },
+  "name": "Security Groups",
+  "description": "Virtual firewalls that control inbound and outbound traffic to AWS resources at the instance level. Security groups are stateful, meaning if you allow inbound traffic from a source, the response traffic is automatically allowed back out—even if there's no explicit outbound rule for it. This simplifies configuration and ensures seamless two-way communication for allowed connections."
+}
+,
   {
     "name": "Network Access Control Lists (NACLs)",
     "description": "Stateless firewalls that control traffic at the subnet level with customizable rules"
@@ -916,9 +945,12 @@ configuration: [
     "description": "Unified interface for managing infrastructure and software configurations across AWS and on-premises environments"
   },
   {
-    "name": "AWS CloudFormation",
-    "description": "Infrastructure as code service that provisions and manages AWS resources using declarative templates"
-  },
+  "name": "AWS CloudFormation",
+  "description": "<p>AWS CloudFormation is an infrastructure-as-code service that enables you to model, provision, and manage AWS resources using declarative templates written in JSON or YAML. It automates the deployment of resources such as EC2 instances, VPCs, IAM roles, and more, ensuring consistent and repeatable infrastructure setups.</p><p>CloudFormation <b>stacks</b> are deployed within regions and can span multiple Availability Zones. Templates define resources and their relationships, while parameters, mappings, and outputs allow customization and reuse. CloudFormation <b>StackSets</b> extend this capability by allowing you to deploy stacks across multiple AWS accounts and regions from a single template.</p>",
+  "technotes": "<p>Key operational aspects of AWS CloudFormation include:</p><ul><li><strong>StackStatus</strong>: Indicates the current state of a stack (e.g., CREATE_COMPLETE, UPDATE_IN_PROGRESS, ROLLBACK_FAILED).</li><li><strong>DriftDetectionStatus</strong>: Shows whether resources have changed outside of CloudFormation management.</li><li><strong>ResourceType</strong>: Identifies the AWS service type for each resource in the stack (e.g., AWS::EC2::Instance).</li><li><strong>StackEvents</strong>: Logs lifecycle events such as creation, updates, and failures for troubleshooting.</li><li><strong>ChangeSets</strong>: Preview proposed changes before applying them to a stack, reducing risk during updates.</li></ul><p>CloudFormation also supports nested stacks, cross-stack references, and integration with CI/CD pipelines for automated infrastructure delivery.</p>"
+}
+
+,
   {
     "name": "AWS OpsWorks",
     "description": "Configuration management service that uses Chef and Puppet to automate server setup and deployment"
@@ -992,15 +1024,8 @@ datastreams : [
   {
     "name": "Amazon EventBridge",
     "description": "Event bus service for building event-driven architectures that stream events between AWS services and SaaS apps"
-  },
-  {
-    "name": "Amazon SQS",
-    "description": "Message queuing service that supports decoupled, scalable data streaming between distributed systems"
-  },
-  {
-    "name": "Amazon SNS",
-    "description": "Pub/Sub messaging service for broadcasting streaming data to multiple subscribers in real time"
   }
+ 
 ],
 
 "supportplan" : [
