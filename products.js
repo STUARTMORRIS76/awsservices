@@ -203,9 +203,12 @@ datashipping: [
     "description": "Exabyte-scale data transfer service using a secure truck to move massive datasets to AWS"
   },
   {
-    "name": "AWS DataSync",
-    "description": "Online data transfer service for automating and accelerating movement between on-premises storage and AWS"
-  },
+  "name": "AWS DataSync",
+  "description": "<p><strong>AWS DataSync</strong> is a data transfer service that simplifies, automates, and accelerates moving large amounts of data between on-premises storage and AWS services such as Amazon S3, Amazon EFS, and Amazon FSx.</p>",
+  "technotes": "<ul><li>Supports NFS, SMB, and Amazon S3 as source and destination endpoints.</li><li>Uses a DataSync agent for on-premises deployments.</li><li>Encryption in transit is enabled by default using TLS.</li><li>Can be automated via AWS CLI, SDKs, or CloudWatch Events.</li></ul>",
+  "billingnotes": "<ul><li>Charged based on the amount of data transferred.</li><li>No upfront fees or minimum commitments.</li><li>Additional charges may apply for storage and data retrieval depending on the destination service.</li></ul>"
+}
+,
   {
     "name": "AWS Transfer Family",
     "description": "Fully managed service for transferring files into and out of AWS using SFTP, FTPS, and FTP protocols"
@@ -368,7 +371,7 @@ deploy: [
   "description": "An access point is a hostname that can point to a carefully defined subset of objects in a bucket. Depending on how you configure your access points, clients invoking the hostname will be able to read or write only the data you allow and only as long as you allow it.",
   "technotes": "<p><strong>S3 Access Points</strong> provide a scalable and secure way to manage access to shared datasets. Each access point has its own policy, enabling fine-grained permissions tailored to specific applications or users. They can be restricted to VPCs for private access and simplify access management in multi-tenant environments.</p>\n\n<p><strong>Example: Creating an S3 Access Point using AWS CLI</strong></p>\n<pre><code>aws s3control create-access-point \\\n  --account-id 123456789012 \\\n  --name my-access-point \\\n  --bucket my-bucket-name \\\n  --vpc-configuration VpcId=vpc-abc123</code></pre>\n\n<p>This command creates an access point named <code>my-access-point</code> for the bucket <code>my-bucket-name</code>, scoped to the VPC <code>vpc-abc123</code>. You can then attach a policy to control access behavior.</p>"
 },
- { "name": "Amazon S3TA", "description": "Amazon S3 Transfer Acceleration can speed up content transfers to and from Amazon S3 for long-distance transfer of larger objects.","technotes":"S3TA improves transfer performance by routing traffic through Amazon CloudFront’s globally distributed Edge Locations and over AWS backbone networks, and by using network protocol optimizations.","billingnotes":"With S3TA, you pay only for transfers that are accelerated." },
+ { "name": "Amazon S3TA", "description": "Amazon S3 Transfer Acceleration can speed up content transfers to and from Amazon S3 for long-distance transfer of larger objects.  Note: This is not for cross-region transfer as you are already inside the AWS Backbone Network","technotes":"S3TA improves transfer performance by routing traffic through Amazon CloudFront’s globally distributed Edge Locations and over AWS backbone networks, and by using network protocol optimizations.","billingnotes":"With S3TA, you pay only for transfers that are accelerated." },
   { "name": "Amazon S3 Glacier", "description": "Low-cost archival storage designed for long-term data retention with retrieval options from milliseconds to hours"},
   { "name": "Amazon EBS", "description": "Block storage volumes for use with Amazon EC2, offering low-latency performance and high availability","technotes":"Deleting unused EBS volumes after terminating an EC2 instance helps save money because these volumes continue to incur charges even when the associated instance is stopped or terminated. By removing these unnecessary volumes, you can significantly reduce your monthly storage costs, as you only pay for the storage you actively use." },
   { "name": "Amazon EFS", "description": "Fully managed elastic file system for Linux workloads, accessible across multiple EC2 instances" },
@@ -377,7 +380,13 @@ deploy: [
   "description": "<p><strong>Amazon FSx for Windows File Server</strong> is a fully managed Windows file system built on Windows Server, designed for enterprise-grade applications that require native Windows compatibility. It supports the <strong>SMB protocol</strong>, enabling seamless file sharing across Windows, Linux, and macOS clients. This makes it ideal for workloads like home directories, departmental shares, and business applications that rely on Windows file systems.</p>"
 },
   { "name": "Amazon FSx for Lustre", "description": "High-performance file system optimized for fast processing of workloads like machine learning and HPC" },
-  { "name": "Amazon FSx for NetApp ONTAP", "description": "Fully managed file storage built on NetApp ONTAP, supporting advanced data management features" },
+  {
+  "name": "Amazon FSx for NetApp ONTAP",
+  "description": "<p><strong>Amazon FSx for NetApp ONTAP</strong> is a fully managed shared file storage service built on NetApp’s ONTAP file system. It provides high-performance, scalable, and feature-rich storage accessible via NFS, SMB, iSCSI, and NVMe-over-TCP protocols. FSx for ONTAP supports advanced data management features like snapshots, replication, and tiering, making it ideal for enterprise workloads.</p>",
+  "technotes": "<ul><li>Supports multiprotocol access: NFS, SMB, iSCSI, NVMe-over-TCP.</li><li>Offers SSD storage with submillisecond latencies.</li><li>Includes ONTAP features like SnapMirror, FlexClone, and data tiering.</li><li>Available in Single-AZ and Multi-AZ configurations for resilience.</li><li>Integrates with AWS services like CloudWatch, IAM, and Backup.</li></ul>",
+  "billingnotes": "<ul><li>Pricing based on provisioned storage and throughput capacity.</li><li>Separate charges for SSD and capacity pool storage tiers.</li><li>Data transfer within AWS is free; cross-region replication incurs charges.</li><li>Backup storage and requests billed separately via AWS Backup.</li></ul>"
+},
+
   { "name": "Amazon FSx for OpenZFS", "description": "Managed file system based on OpenZFS, designed for performance and data protection" },
   { "name": "Amazon File Cache", "description": "High-speed cache for file-based workloads that require fast access to data across multiple sources" },
   { "name": "AWS S3 File Gateway", "description": "Enables on-premises applications to store files as objects in Amazon S3 using SMB or NFS protocols" },
@@ -944,6 +953,14 @@ configuration: [
     "name": "AWS Systems Manager",
     "description": "Unified interface for managing infrastructure and software configurations across AWS and on-premises environments"
   },
+{
+  "name": "AWS Resource Access Manager (RAM)",
+  "description": "<p><strong>AWS RAM</strong> enables secure and scalable sharing of AWS resources across accounts or within your AWS Organization. It helps eliminate duplication and simplifies governance by allowing centralized services to be reused across environments. One of its most powerful features is <strong>VPC Sharing</strong>, which allows multiple accounts to deploy resources into shared subnets within a centrally managed VPC.</p>",
+  "technotes": "<ul><li>Supports sharing of resources such as VPC subnets, Transit Gateways, Route 53 Resolver rules, License Manager configurations, and more.</li><li><strong>VPC Sharing</strong>: Enables participant accounts to launch resources into shared subnets while the owner retains control over networking.</li><li>Works across AWS accounts and organizational units (OUs) within AWS Organizations.</li><li>Uses resource-based policies and sharing invitations to manage access.</li><li>Integrated with AWS Organizations for streamlined governance and policy enforcement.</li><li>Supports tagging and CloudTrail logging for auditing and compliance.</li></ul>",
+  "billingnotes": "<ul><li>No additional cost for using AWS RAM.</li><li>Standard charges apply for the shared resources themselves (e.g., VPC, Transit Gateway).</li><li>VPC Sharing helps reduce duplication and optimize resource usage across accounts.</li><li>Consolidated billing benefits apply when used with AWS Organizations.</li></ul>"
+}
+,
+
   {
   "name": "AWS CloudFormation",
   "description": "<p>AWS CloudFormation is an infrastructure-as-code service that enables you to model, provision, and manage AWS resources using declarative templates written in JSON or YAML. It automates the deployment of resources such as EC2 instances, VPCs, IAM roles, and more, ensuring consistent and repeatable infrastructure setups.</p><p>CloudFormation <b>stacks</b> are deployed within regions and can span multiple Availability Zones. Templates define resources and their relationships, while parameters, mappings, and outputs allow customization and reuse. CloudFormation <b>StackSets</b> extend this capability by allowing you to deploy stacks across multiple AWS accounts and regions from a single template.</p>",
