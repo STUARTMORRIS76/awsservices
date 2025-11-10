@@ -95,10 +95,10 @@ ai: [
     "description": "Extends Amazon ECS to run containers on customer-managed infrastructure outside AWS"
   },
   {
-    "name": "Amazon EKS",
-    "description": "Managed Kubernetes service for running containerized applications using Kubernetes",
-    "technotes":"lets you run Kubernetes clusters on your own infrastructure using the same tools as AWS EKS, without needing a cloud connection. It's ideal for hybrid or on-prem environments."
-  },
+  "name": "Amazon EKS",
+  "description": "Managed Kubernetes service for running containerized applications using Kubernetes",
+  "technotes": "Lets you run Kubernetes clusters on your own infrastructure using the same tools as AWS EKS, without needing a cloud connection. It's ideal for hybrid or on-prem environments.<BR><BR><strong>EKS Autoscaling:</strong><BR><BR>Amazon EKS supports multiple autoscaling mechanisms to optimize resource usage and performance. You can use the Kubernetes Cluster Autoscaler to automatically adjust the number of EC2 nodes based on pending pods, Horizontal Pod Autoscaler to scale pods based on CPU or memory metrics, and Karpenter for dynamic provisioning of compute capacity with faster scaling and cost efficiency."
+},
   {
     "name": "Amazon EKS Anywhere",
     "description": "Deploy and manage Kubernetes clusters on-premises using Amazon EKS tooling"
@@ -202,6 +202,11 @@ datashipping: [
     "name": "AWS Snowmobile",
     "description": "Exabyte-scale data transfer service using a secure truck to move massive datasets to AWS"
   },
+  {
+  "name": "AWS Database Migration Service (DMS)",
+  "description": "<p>AWS DMS helps you migrate databases quickly and securely to AWS. It supports homogeneous migrations (e.g., Oracle to Oracle) and heterogeneous migrations (e.g., SQL Server to Amazon Aurora), with minimal downtime during the process.</p>\n\n<p>DMS can also be used for continuous data replication between on-premises and cloud databases, making it ideal for hybrid architectures and real-time analytics.</p>",
+  "technotes": "<p><strong>Supported Sources and Targets:</strong></p>\n<ul>\n  <li>Supports popular engines like Oracle, SQL Server, MySQL, PostgreSQL, MariaDB, MongoDB, and Amazon Aurora.</li>\n  <li>Targets include Amazon RDS, Amazon Redshift, Amazon S3, Amazon DynamoDB, and more.</li>\n</ul>\n\n<p><strong>Key Features:</strong></p>\n<ul>\n  <li><strong>Minimal downtime:</strong> Keeps source databases fully operational during migration.</li>\n  <li><strong>Change Data Capture (CDC):</strong> Continuously replicates changes from source to target in near real-time.</li>\n  <li><strong>Schema conversion:</strong> Use with AWS Schema Conversion Tool (SCT) for heterogeneous migrations.</li>\n  <li><strong>Monitoring:</strong> Integrated with Amazon CloudWatch for visibility into migration tasks.</li>\n  <li><strong>Secure:</strong> Supports encryption in transit and at rest, and VPC-based deployments.</li>\n</ul>\n\n<p><strong>Use Cases:</strong></p>\n<ul>\n  <li>Lift-and-shift migrations to AWS cloud databases.</li>\n  <li>Cross-region or cross-account replication.</li>\n  <li>Real-time analytics pipelines using S3 or Redshift as targets.</li>\n  <li>Disaster recovery and high availability replication setups.</li>\n</ul>\n\n<p><strong>Example:</strong> Migrate an on-premises Oracle database to Amazon Aurora PostgreSQL with minimal downtime using DMS and SCT.</p>"
+},
   {
   "name": "AWS DataSync",
   "description": "<p><strong>AWS DataSync</strong> is a data transfer service that simplifies, automates, and accelerates moving large amounts of data between on-premises storage and AWS services such as Amazon S3, Amazon EFS, and Amazon FSx.</p>",
@@ -451,7 +456,11 @@ deploy: [
 ,
   database: 
    [
-  { "name": "Amazon Aurora", "description": "High-performance managed relational database compatible with MySQL and PostgreSQL" },
+{
+  "name": "Amazon Aurora",
+  "description": "<p>Amazon Aurora is a fully managed relational database engine designed for high performance, availability, and compatibility with MySQL and PostgreSQL. It offers enterprise-grade capabilities with the simplicity and cost-effectiveness of open-source databases.</p>",
+  "technotes": "<p><strong>Deployment Models:</strong></p>\n<ul>\n  <li><strong>Aurora Standard:</strong> The default configuration where you pay separately for database instances, storage, and I/O operations. Ideal for workloads with moderate or variable I/O usage where cost optimization is based on actual consumption.</li>\n  <li><strong>Aurora I/O-Optimized:</strong> A configuration that eliminates I/O charges and instead charges a higher rate for compute and storage. Best suited for I/O-intensive workloads such as analytics, batch processing, and high-throughput transactional systems. Offers predictable pricing and improved performance for heavy I/O operations.</li>\n</ul>\n\n<p><strong>Key Features:</strong></p>\n<ul>\n  <li>MySQL and PostgreSQL compatibility</li>\n  <li>Distributed, fault-tolerant storage that auto-scales up to 128 TB</li>\n  <li>High availability with multi-AZ deployments and automatic failover</li>\n  <li>Global Database for cross-region replication</li>\n  <li>Serverless v2 for on-demand, fine-grained compute scaling</li>\n  <li>Encryption at rest and in transit, IAM integration, and VPC isolation</li>\n</ul>"
+},
   { "name": "Amazon RDS", "description": "Managed relational database service supporting multiple engines like MySQL, PostgreSQL, Oracle, and SQL Server","technotes":"uses EBS as primary storage" },
   { "name": "Babelfish for PostgreSQL", "description": "lets you run SQL Server applications on PostgreSQL by adding T-SQL compatibility and support for SQL Server’s wire protocol."},
 {
@@ -650,7 +659,7 @@ serverless : [
   },
   {
   "name": "Amazon EventBridge",
-  "description": "<p><strong>Amazon EventBridge</strong> is a service that helps different parts of your system talk to each other by sending and receiving messages called events. You can use it to connect AWS services, third-party apps, or your own software — and set up rules for what should happen when certain events occur.</p>\
+  "description": "<p><strong>Amazon EventBridge</strong> is a service that helps different parts of your system talk to each other by sending and receiving messages called events. You can use it to connect AWS services, third-party apps, or your own software — and set up rules for what should happen when certain events occur.</p><BR>Best option for decoupling SAAS\
   <p>You can also use EventBridge like a scheduler. It lets you run tasks at specific times using <strong>cron jobs</strong> or <strong>rate expressions</strong> (like every 5 minutes or every day at 9 AM). These scheduled tasks can trigger things like <strong>AWS Fargate</strong> containers, which run code without needing to manage servers.</p>\
   <p>In short, EventBridge helps automate your system, respond to changes, and run tasks on a schedule — all without needing to build complex connections between services.</p>",
   "technotes": "<ul>\
@@ -914,6 +923,11 @@ networking: [
     "name": "Application Load Balancer (ALB)",
     "description": "Layer 7 load balancer that routes HTTP/HTTPS traffic based on content and supports advanced routing features"
   },
+  {
+  "name": "Server Name Indication (SNI)",
+  "description": "<p>Server Name Indication (SNI) is a TLS protocol extension that allows a client to specify the hostname it wants to connect to during the SSL handshake. This enables a single server or load balancer to host multiple secure websites using distinct SSL certificates on the same IP address.</p>\n\n<p>SNI is widely supported by modern browsers and operating systems and is essential for scalable, secure multi-tenant architectures in the cloud.</p>",
+  "technotes": "<p><strong>SNI in AWS:</strong></p>\n<ul>\n  <li><strong>Application Load Balancer (ALB):</strong> Supports SNI by allowing multiple SSL certificates on a single HTTPS listener. This enables hosting multiple secure applications behind one ALB.</li>\n  <li><strong>Elastic Beanstalk:</strong> Uses ALB with SNI to support multiple environments with distinct domains and certificates.</li>\n  <li><strong>Amazon CloudFront:</strong> Supports SNI for HTTPS connections to edge locations, reducing the need for dedicated IP addresses.</li>\n</ul>\n\n<p><strong>Benefits:</strong></p>\n<ul>\n  <li><strong>Multi-domain hosting:</strong> Serve multiple secure websites from one IP address.</li>\n  <li><strong>Cost efficiency:</strong> Reduces the need for multiple Elastic IPs or dedicated load balancers.</li>\n  <li><strong>Simplified certificate management:</strong> Each domain can use its own certificate without complex routing.</li>\n</ul>\n\n<p><strong>Use Case Example:</strong> Hosting <code>api.example.com</code> and <code>app.example.com</code> behind a single ALB with distinct SSL certificates for each domain using SNI.</p>"
+},
   {
   "name": "AWS Network Load Balancer",
   "description": "<p>High-performance Layer 4 load balancer for TCP/UDP traffic,  *EXAM NOTE* Targets most likely going be <b>private IPs</b> as it is an AWS VPC</p>",
