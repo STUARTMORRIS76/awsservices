@@ -336,7 +336,7 @@ input:checked + .slider:before {
   <div id="menu">
     <table class="category-table">
 <tr>
-  <td><a href="#" onclick="loadCategory('compute')"><i class="fas fa-microchip"></i> AWS Compute</a></td>
+  <td><a href="#" onclick="loadCategory('global')"><i class="fas fa-globe"></i> AWS Global</a></td>
   <td><a href="#" onclick="loadCategory('networking')"><i class="fas fa-network-wired"></i> AWS Networking</a></td>
 </tr>
 <tr>
@@ -365,7 +365,7 @@ input:checked + .slider:before {
 </tr>
 <tr>
   <td><a href="#" onclick="loadCategory('configuration')"><i class="fas fa-sliders-h"></i> AWS Configuration Management</a></td>
-  <td><a href="#" onclick="loadCategory('datashipping')"><i class="fas fa-shipping-fast"></i> AWS Datashipping</a></td>
+  <td><a href="#" onclick="loadCategory('datashipping')"><i class="fas fa-shipping-fast"></i> AWS Data Transfer</a></td>
 </tr>
 <tr>
   <td><a href="#" onclick="loadCategory('datastreams')"><i class="fas fa-stream"></i> AWS DataStreams</a></td>
@@ -401,6 +401,7 @@ input:checked + .slider:before {
 let currentCategory = null;
 
 const categoryTitles = {
+  global : "AWS Global Services",
   compute: "AWS Compute",
   networking: "AWS Networking",
   resilient: "AWS Resilient Networking",
@@ -415,7 +416,7 @@ const categoryTitles = {
   analytics: "AWS Analytics",
   ai: "AWS Machine Learning / AI",
   configuration: "AWS Configuration Management",
-  datashipping: "AWS Data Shipping",
+  datashipping: "AWS Data Transfer",
   datastreams: "AWS Data Streams",
   management: "AWS Account Management / Billing",
   serverless: "AWS Serverless",
