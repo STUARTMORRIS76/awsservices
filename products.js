@@ -493,7 +493,7 @@ deploy: [
  { "name": "Amazon DAX", "description": "Managed in-memory caching service for DynamoDB that delivers microsecond read performance by caching frequently accessed data" },
 {
   "name": "Amazon ElastiCache",
-  "description": "In-memory caching service supporting Redis(<b>R</b>emote <b>D</b>ictionary <b>S</b>ervice) and Memcached, and Valkey for ultra-fast performance, requires a lot of effort to change Application Code to use.",
+  "description": "In-memory caching service supporting Redis(<b>R</b>emote <b>D</b>ictionary <b>S</b>ervice) and Memcached (<B>Multithreaded</B>), and Valkey for ultra-fast performance, requires a lot of effort to change Application Code to use.",
   "technotes": "<p><strong>Applications:</strong> Game leaderboards, real-time analytics, session stores, and caching layers for web apps.</p>\n<p>Ehcache not supported.</p>\n\n<p><strong>Databases in AWS That Support ElastiCache:</strong></p>\n<ul>\n  <li><strong>Amazon RDS:</strong> Use ElastiCache to cache query results and reduce read pressure on MySQL, PostgreSQL, MariaDB, Oracle, and SQL Server.</li>\n  <li><strong>Amazon Aurora:</strong> Accelerate read-heavy workloads and metadata access for both Aurora MySQL and Aurora PostgreSQL.</li>\n  <li><strong>Amazon DynamoDB:</strong> Cache frequently accessed items or aggregation results to reduce read units and latency.</li>\n  <li><strong>Amazon DocumentDB:</strong> Improve performance by caching document queries and search results.</li>\n  <li><strong>Amazon Redshift:</strong> Use ElastiCache to cache dashboard queries and analytics results for faster front-end performance.</li>\n</ul>\n\n<p><strong>Redis vs Memcached:</strong></p>\n<ul>\n  <li><strong>Redis:</strong> Supports advanced data structures (lists, sets, hashes), persistence, replication, pub/sub messaging, and clustering. Ideal for complex caching, real-time analytics, and session management.</li>\n  <li><strong>Memcached:</strong> Simple key-value store with high performance and low memory overhead. Best for straightforward caching scenarios like page fragments or database query results.</li>\n  <li><strong>Redis is recommended</strong> for most modern applications due to its richer feature set and scalability options.</li>\n</ul>"
 },
 {
@@ -534,7 +534,7 @@ deploy: [
   { "name": "AWS Shield", "description": "Guard against DDoS attacks" },
   { "name": "AWS Firewall Manager", "description": "Manage firewall rules, SGs, and Shield, across your AWS Organization" },
   { "name": "AWS Network Firewall", "description": "Fortify network security across Amazon VPCs by filtering traffic" },
-  { "name": "Amazon GuardDuty", "description": "A relentless threat detection service, continuously monitoring for malicious activities" },
+  { "name": "Amazon GuardDuty", "description": "A relentless threat detection service, continuously monitoring for malicious activities.  Threat Inelligence assisted with AI/ML.<BR>Identifies any unusual or unauthorized activity, like <b>cryptocurrency mining</b>" },
   { "name": "Amazon Detective", "description": "Dive deep into security data and visualize threats" },
   { "name": "Amazon Inspector", "description": "Discover workloads and scan them for software vulnerabilities" },
   { "name": "AWS CloudTrail", "description": "A meticulous recorder, logging user activity and API usage (Tip: push to CloudWatch Logs for tracking & to generate metrics and alerts)" },
